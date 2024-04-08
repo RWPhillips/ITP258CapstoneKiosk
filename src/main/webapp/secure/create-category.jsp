@@ -1,12 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
+<jsp:include page="adminheader.jsp" />
+	<div class="categories">
+		<h2>Add a New Item Category</h2>
+		<form action="DataServlet" method="post"> 
+			<label for="addcategory"></label>
+			<input type="text" class="" name="addcategory" maxlength="100">
+			<input type="submit" value="Create">
+		</form>
+		<h2>Delete an Item Category</h2>
+			<p>Only categories with no items can be deleted</p>
+			<form action="DataServlet" method="post"> 
+			<label for="delcategory"></label>
+			<select name="delcategory" class="">
+			</select>
+			<input type="submit" value="Delete">
+		</form>
+	</div>
 </body>
 </html>

@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Administration Panel</title>
 </head>
 <body>
-
+	<p>Welcome to the OrderUp Kiosk Administration Panel</p>
+	<p>Select a category on the left to get started</p>
+	<div class="additem">
+		<form>
+		</form>
+	</div>
 </body>
 </html>
