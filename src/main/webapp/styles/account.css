@@ -1,3 +1,7 @@
+:root {
+	--bgblue: #143D59;
+}
+
 body {
 	display: flex;
 	min-height: 100vh;
@@ -5,7 +9,7 @@ body {
 }
 
 h2 {
-	background-color: #143D59;
+	background-color: var(--bgblue);
 	color:white; 
 	text-align: center; 
 	margin: 0; 
@@ -20,17 +24,23 @@ h2 {
 }
 
 .accountButton {
-	width: 12vw; 
+	width: 10.5vw; 
 	padding: 10px; 
 	margin-top: 3vh; 
-	margin-left: 5vw; 
 	border: 1px solid black;
+	background-color: var(--bgblue);
+	color: white; 
 }
 
 .accountForm {
-	padding-left: 1vw; 
 	margin-top: 1vh; 
 	display: grid; 
+	justify-items: center; 
+	grid-template-columns: auto; 
+}
+
+.accountForm label,input,button,select {
+	width: 10vw; 
 }
 .create {
 	border: 1px solid black; 
@@ -52,17 +62,8 @@ h2 {
 	padding-bottom: 10px; 
 }
 
-.password {
-	margin-right: 10px; 
-}
-
 .password:focus + .reminder{
 	visibility: visible; 
-}
-.reminder {
-	font-size: 12px; 
-	background-color: #FFFFE0; 
-	visibility: hidden;
 }
 
 .update {

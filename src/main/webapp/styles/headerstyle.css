@@ -6,6 +6,7 @@ body {
 
 a:link {
 	text-decoration: none; 
+	color: white; 
 }
 a:visited {
 	color: white; 
@@ -14,15 +15,19 @@ a:hover {
 	color: #6CB4EE; 
 }
 
+.imgPad {
+	margin-top: 3vh; 
+	padding-left: 2vw; 
+}
+
 .nav {
 	width: 100%; 
-
 }
 
 .header-ul{
 	display: flex; 
 	list-style-type: none; 
-	margin-top: 5vh; 
+	margin-top: 3vh; 
 	margin-left: 0px; 
 	background-color: #143D59;
 	color: white; 
@@ -30,6 +35,11 @@ a:hover {
 	text-transform: uppercase; 
 }
 
+.headerImg {
+	box-sizing: border-box; 
+	width: 675px;
+	height: 144px; 
+}
 
 .header-li {
 	padding: 10px; 

@@ -11,6 +11,9 @@
 
 </head>
 <body>
+	<div class="imgPad"> 
+		<img src="../images/orderup.png" class="headerImg">
+	</div>
 	<header> 
 		<nav class="nav">
 			<ul class="header-ul">
