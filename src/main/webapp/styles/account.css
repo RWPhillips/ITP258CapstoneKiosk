@@ -1,0 +1,20 @@
+.accounts {
+	margin-left: 1vw;  
+}
+
+.padform {
+	padding-bottom: 10px; 
+}
+
+#reminder {
+	font-size: 12px; 
+	background-color: #FFFFE0; 
+	visibility: hidden;
+}
+.password {
+	margin-right: 10px; 
+}
+
+.password:focus + #reminder{
+	visibility: visible; 
+}

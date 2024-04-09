@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>header</title>
+<title>OrderUp Administration Panel</title>
 <link rel="stylesheet" href="../styles/headerstyle.css">
+<link rel="stylesheet" href="../styles/account.css">
+
 </head>
 <body>
 	<header> 
