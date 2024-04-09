@@ -6,6 +6,7 @@ body {
 
 a:link {
 	text-decoration: none; 
+	color: white; 
 }
 a:visited {
 	color: white; 
@@ -16,7 +17,6 @@ a:hover {
 
 .nav {
 	width: 100%; 
-
 }
 
 .header-ul{
