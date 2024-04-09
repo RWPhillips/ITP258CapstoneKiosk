@@ -7,6 +7,7 @@
 <title>OrderUp Administration Panel</title>
 <link rel="stylesheet" href="../styles/headerstyle.css">
 <link rel="stylesheet" href="../styles/account.css">
+<link rel="stylesheet" href="../styles/footer.css">
 
 </head>
 <body>

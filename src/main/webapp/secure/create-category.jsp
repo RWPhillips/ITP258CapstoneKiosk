@@ -1,4 +1,5 @@
 <jsp:include page="adminheader.jsp" />
+<section>
 	<div class="categories">
 		<h2>Add a New Item Category</h2>
 		<form action="DataServlet" method="post"> 
@@ -15,5 +16,5 @@
 			<input type="submit" value="Delete">
 		</form>
 	</div>
-</body>
-</html>
+</section>	
+<jsp:include page="footer.jsp" />

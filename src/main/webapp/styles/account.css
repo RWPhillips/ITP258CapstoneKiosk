@@ -1,20 +1,74 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column; 
+}
+
+h2 {
+	background-color: #143D59;
+	color:white; 
+	text-align: center; 
+	margin: 0; 
+	border-radius: 10px 10px 0px 0px; 
+	padding: 5px; 
+}
+
 .accounts {
-	margin-left: 1vw;  
+	margin-left: 1vw;
+	display: grid; 
+	grid-template-columns: 1fr; 
+}
+
+.accountButton {
+	width: 12vw; 
+	padding: 10px; 
+	margin-top: 3vh; 
+	margin-left: 5vw; 
+	border: 1px solid black;
+}
+
+.accountForm {
+	padding-left: 1vw; 
+	margin-top: 1vh; 
+	display: grid; 
+}
+.create {
+	border: 1px solid black; 
+	border-radius: 10px; 
+	width: 24vw;
+	padding-bottom: 1vh; 
+	margin-bottom: 3vh; 
+}
+
+.delete {
+	border: 1px solid black; 
+	border-radius: 10px; 
+	width: 24vw;
+	padding-bottom: 1vh; 
+	margin-bottom: 3vh; 
 }
 
 .padform {
 	padding-bottom: 10px; 
 }
 
-#reminder {
-	font-size: 12px; 
-	background-color: #FFFFE0; 
-	visibility: hidden;
-}
 .password {
 	margin-right: 10px; 
 }
 
-.password:focus + #reminder{
+.password:focus + .reminder{
 	visibility: visible; 
+}
+.reminder {
+	font-size: 12px; 
+	background-color: #FFFFE0; 
+	visibility: hidden;
+}
+
+.update {
+	border: 1px solid black; 
+	border-radius: 10px; 
+	width: 24vw;
+	padding-bottom: 1vh;
+	margin-bottom: 3vh;  
 }

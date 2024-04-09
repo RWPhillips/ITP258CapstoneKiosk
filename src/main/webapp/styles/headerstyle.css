@@ -34,3 +34,7 @@ a:hover {
 .header-li {
 	padding: 10px; 
 }
+
+input:invalid {
+	color:red
+}; 
