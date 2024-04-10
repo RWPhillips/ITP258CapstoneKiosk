@@ -3,17 +3,26 @@ package com.itp258capstonekiosk.objects;
 public class AccountObject {
 
 	private int id;
+	private int accountId;
 	private String username;
 	private String password;
-	private String words;
 
-	public AccountObject(String username, String password) {
+	public AccountObject(String username, String password, int accountId) {
 		this.username = username;
 		this.password = password;
+		this.accountId = accountId;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+	
+	public int getAccountId() {
+		return accountId;
 	}
 
 	public void setId(int id) {
@@ -34,14 +43,6 @@ public class AccountObject {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getWords() {
-		return words;
-	}
-
-	public void setWords(String words) {
-		this.words = words;
 	}
 
 }
