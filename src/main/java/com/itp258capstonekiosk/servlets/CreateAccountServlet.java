@@ -20,7 +20,7 @@ import com.itp258capstonekiosk.services.AccountService;
 public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Resource(name = "jdbc/japanese")
+	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
 
     /**

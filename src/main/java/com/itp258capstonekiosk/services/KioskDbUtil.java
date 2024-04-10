@@ -36,8 +36,8 @@ public class KioskDbUtil {
             e.printStackTrace();
         }
 
-        String jdbcUrl = "jdbc:mysql://localhost/DatabaseNameGoesHere?useUnicode=true&characterEncoding=UTF-8";
-        String user = "UserName";
+        String jdbcUrl = "jdbc:mysql://localhost/kioskdatabase?useUnicode=true&characterEncoding=UTF-8";
+        String user = "Username";
         String password = "Password";
 
         try {
