@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
 </head>
 <body>
     <section>
@@ -35,6 +35,6 @@
             </div>
         </div>
     </section>
-    <jsp:include page="../secure/footer.jsp" />
 </body>
 </html>
+<jsp:include page="footer.jsp" />
