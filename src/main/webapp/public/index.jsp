@@ -36,6 +36,6 @@
             </div>
         </div>
     </section>
-    <jsp:include page="../secure/footer.jsp" />
 </body>
 </html>
+<jsp:include page="../secure/footer.jsp" />
