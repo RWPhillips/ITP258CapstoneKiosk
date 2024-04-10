@@ -18,11 +18,18 @@
 		<div class="login-form">
 			<h2>Login</h2>
 			<form>
-				<label for="username">Username:</label><br> <input type="text"
-					id="username" name="username"><br> <label
-					for="password">Password:</label><br> <input type="password"
-					id="password" name="password"><br>
-				<br> <input type="submit" value="Login">
+				<div class="grid-container">
+					<label for="username">Username:</label><br> <input type="text"
+						id="username" name="username"><br>
+				</div>
+				<div>
+					<label for="password">Password:</label><br> <input
+						type="password" id="password" name="password"><br>
+				</div>
+				<br>
+				<div>
+					<input type="submit" value="Login">
+				</div>
 			</form>
 		</div>
 	</section>

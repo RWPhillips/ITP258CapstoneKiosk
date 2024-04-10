@@ -16,19 +16,16 @@ body {
 }
 
 .login-form {
-    margin: 0 auto;
-    width: 300px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 50px;
-    border: 1px solid black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
+	margin: 0 auto;
+	margin-top: 1vh; 
+    display: grid; 
+    justify-items: center; 
+    grid-template-columns: auto; 
+	width: 300px;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid black;
 }
 
 .footer {
