@@ -1,62 +1,41 @@
 body {
-    font-family: "Segoe UI", sans-serif;
-    background-color: #FFFFFF;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+	font-family: "Segoe UI", sans-serif;
+	background-color: #FFFFFF;
+	margin: 0;
+	padding: 0;
+	height: 100%; 
+	width: 98vw; 
 }
 
 .fullscreen {
-    min-height: 100vh;
+	min-height: 94vh; 
 }
 
 .header {
-    background-color: blue;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+	background-color: #143D59;
+	height: 150px;
 }
 
 .banner {
-    background-color: #143D59;
-    height: 10px;
+	background-color: #143D59;
+	height: 10px;
 }
 
 .login-form-container {
-    display: grid;
-    justify-items: center;
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 10px;
+	display: grid;
+	justify-items: center;
 }
 
 .login-form {
-    margin-top: 1vh;
+	margin-top: 1vh;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 10px;
+	display: grid;
+	grid-template-columns: auto;
+	gap: 10px;
 }
 
 .grid-container>div {
-    text-align: center;
-}
-
-.login-button {
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.login-button:hover {
-    background-color: navy;
+	text-align: center;
 }

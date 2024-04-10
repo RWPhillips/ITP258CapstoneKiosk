@@ -20,7 +20,7 @@ import com.itp258capstonekiosk.services.AccountService;
 public class CreateAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Resource(name = "jdbc/kioskdatabase")
+	@Resource(name = "jdbc/japanese")
 	private DataSource dataSource;
 
     /**
@@ -47,12 +47,11 @@ public class CreateAccountServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String username = request.getParameter("username");
+		String username = request.getParameter("userName");
         String password = request.getParameter("password");
-        String accountType = request.getParameter("accType");
 
         AccountService account = new AccountService(dataSource);
-        account.createAccount(username, password, accountType);
+        account.createAccount(username, password, "user");
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
