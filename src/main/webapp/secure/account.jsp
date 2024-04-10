@@ -3,7 +3,7 @@
 	<div class="accounts">
 		<div class="create">
 			<h2>Create a New Account</h2>
-			<form action="AccountServlet" method="post" class="accountForm">
+			<form action="${pageContext.request.contextPath}/CreateAccountServlet" method="post" class="accountForm">
 				<div class="padform">
 					<label for="userName">User Name: </label>
 				</div>
