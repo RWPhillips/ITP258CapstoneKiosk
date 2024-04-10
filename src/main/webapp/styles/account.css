@@ -2,9 +2,13 @@
 	--bgblue: #143D59;
 }
 
+html {
+	height: 100vh; 
+}
+
 body {
 	display: flex;
-	min-height: 100vh;
+	min-height: 95vh;
 	flex-direction: column; 
 }
 
@@ -20,7 +24,7 @@ h2 {
 .accounts {
 	margin-left: 1vw;
 	display: grid; 
-	grid-template-columns: 1fr; 
+	grid-template-columns: 1fr;  
 }
 
 .accountButton {
@@ -60,10 +64,6 @@ h2 {
 
 .padform {
 	padding-bottom: 10px; 
-}
-
-.password:focus + .reminder{
-	visibility: visible; 
 }
 
 .update {

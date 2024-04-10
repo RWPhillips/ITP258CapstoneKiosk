@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Form</title>
 <link rel="stylesheet" type="text/css" href="../styles/index.css">
+<link rel="stylesheet" type="text/css" href="../styles/footer.css">
 </head>
 <body>
-	<section>
+	<section class="fullscreen">
 		<div class="imgPad">
 			<img src="../images/orderup.png" class="headerImg">
 		</div>

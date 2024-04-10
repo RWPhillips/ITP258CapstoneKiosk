@@ -3,6 +3,11 @@ body {
 	background-color: #FFFFFF;
 	margin: 0;
 	padding: 0;
+	height: 100%; 
+}
+
+.fullscreen {
+	min-height: 94vh; 
 }
 
 .header {
@@ -32,12 +37,4 @@ body {
 
 .grid-container>div {
 	text-align: center;
-}
-
-.footer {
-	margin-top: auto;
-	bottom: 0;
-	width: 100%;
-	padding-left: 1vw;
-	border-top: 1px solid gray;
 }

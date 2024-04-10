@@ -1,5 +1,5 @@
 <jsp:include page="adminheader.jsp" />
-<section>
+<section class="content">
 	<div class="accounts">
 		<div class="create">
 			<h2>Create a New Account</h2>
