@@ -3,12 +3,22 @@ body {
     background-color: #FFFFFF;
     margin: 0;
     padding: 0;
-    height: 93vh; 
-    width: 100%;
+    height: 94vh;
+    width: 99vw;
+}
+
+h2 {
+	background-color: #143D59;  
+	color: white; 
+	text-align: center; 
+	width: 12vw;  
+	padding: 0; 
+	margin: 0; 
+	border-radius: 5px 5px 0px 0px;  
 }
 
 .fullscreen {
-    min-height: 93vh;
+    min-height: 94vh;
 }
 
 .header {
@@ -20,25 +30,30 @@ body {
 
 .banner {
     background-color: #143D59;
-    height: 10px;
+    height: 2vh;
+}
+
+.login-form {
+	padding: 0px; 
+	margin: 0px; 
 }
 
 .login-form-container {
     display: grid;
     justify-items: center;
     border: 1px solid black;
-    padding: 20px;
+    padding: 0px; 
     border-radius: 10px;
-}
-
-.login-form {
-    margin-top: 1vh;
+    width: 12vw; 
+    margin-left: 45vw; 
+    margin-top: 10vh; 
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: auto;
     gap: 10px;
+    width: 100%; 
 }
 
 .grid-container>div {
@@ -53,6 +68,7 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 1vh; 
 }
 
 .login-button:hover {
