@@ -12,9 +12,10 @@ h2 {
 	color: white; 
 	text-align: center; 
 	width: 12vw;  
-	padding: 0; 
+	padding-bottom: 1vh;  
 	margin: 0; 
 	border-radius: 5px 5px 0px 0px;  
+	margin-bottom: 1vh; 
 }
 
 .fullscreen {
@@ -69,6 +70,10 @@ h2 {
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 1vh; 
+}
+
+.padForm {
+	margin-bottom: 1vh; 
 }
 
 .login-button:hover {

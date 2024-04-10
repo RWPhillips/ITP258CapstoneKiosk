@@ -20,15 +20,15 @@
                 <h2>Login</h2>
                 <form>
                     <div class="grid-container">
-                        <div>
-                            <label for="username">Username:</label><br> <input
-                                type="text" id="username" name="username"><br>
+                        <div >
+                            <label for="username" class="padForm">Username:</label><br> <input
+                                type="text" id="username" name="username" class="padForm"><br>
                         </div>
-                        <div>
-                            <label for="password">Password:</label><br> <input
-                                type="password" id="password" name="password"><br>
-                        </div>
-                        <div>
+                        <div >
+                            <label for="password" class="padForm">Password:</label><br> <input
+                                type="password" id="password" name="password" class="padForm"><br>
+                        </div >
+                        <div class="padForm"> 
                             <input type="submit" value="Login" class="login-button">
                         </div>
                     </div>
