@@ -21,7 +21,7 @@ public class AccountService {
 		dataSource = theDataSource;
 	}
 
-	public boolean createAccount(String username, String pass, String role) {
+	public boolean createAccount(String username, String pass, String accounttype) {
 
 	    // For checking if the account was created
 	    boolean accountCreated = false;
@@ -33,7 +33,7 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-	        String checkAccountQuery = "SELECT * FROM accounts WHERE username = ?";
+	        String checkAccountQuery = "SELECT * FROM accounts WHERE userName = ?";
 	        statement = connection.prepareStatement(checkAccountQuery);
 	        statement.setString(1, username);
 	        resultSet = statement.executeQuery();
@@ -44,11 +44,11 @@ public class AccountService {
 	            String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt());
 
 	            // The account doesn't exist, create it
-	            String createAccountQuery = "INSERT INTO accounts (username, password, role) VALUES (?, ?, ?)";
+	            String createAccountQuery = "INSERT INTO accounts (userName, userPassword, accounttype) VALUES (?, ?, ?)";
 	            statement = connection.prepareStatement(createAccountQuery);
 	            statement.setString(1, username);
 	            statement.setString(2, hashedPassword);
-	            statement.setString(3, role);
+	            statement.setString(3, accounttype);
 
 	            int rowsInserted = statement.executeUpdate();
 	            if (rowsInserted > 0) {
