@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="../styles/headerstyle.css">
 <link rel="stylesheet" href="../styles/account.css">
 <link rel="stylesheet" href="../styles/footer.css">
+<link rel="stylesheet" href="../styles/create.css">
+
 
 </head>
 <body>
@@ -20,6 +22,7 @@
 				<li><a class="header-li" href="http://localhost:8080/ITP258-Capstone-Kiosk/secure/account.jsp">Account Management</a></li>
 				<li><a class="header-li" href="http://localhost:8080/ITP258-Capstone-Kiosk/secure/create-category.jsp">Create a Category</a></li>
 				<li><a class="header-li" href="http://localhost:8080/ITP258-Capstone-Kiosk/secure/create-item.jsp">Create an Item</a></li>
+				<li><a class="header-li" href="http://localhost:8080/ITP258-Capstone-Kiosk/secure/create-subitem-category.jsp">Create a Subitem Category</a></li>
 				<li><a class="header-li" href="http://localhost:8080/ITP258-Capstone-Kiosk/secure/create-subitem.jsp">Create a Subitem</a></li>
 			</ul>
 		</nav>
