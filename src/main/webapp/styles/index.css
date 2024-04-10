@@ -27,11 +27,13 @@ h2 {
     display: flex;
     color: white;
     padding-left: 1vw; 
+    margin-bottom: 3vh; 
 }
 
 .banner {
     background-color: #143D59;
-    height: 2vh;
+    height: 3vh;
+    width: 100vw; 
 }
 
 .login-form {
@@ -47,7 +49,7 @@ h2 {
     border-radius: 10px;
     width: 12vw; 
     margin-left: 45vw; 
-    margin-top: 10vh; 
+    margin-top: 5vh; 
 }
 
 .grid-container {
@@ -77,5 +79,5 @@ h2 {
 }
 
 .login-button:hover {
-    background-color: navy;
+    background-color: #6CB4EE;
 }
