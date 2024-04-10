@@ -27,11 +27,13 @@ h2 {
     display: flex;
     color: white;
     padding-left: 1vw; 
+    margin-bottom: 3vh; 
 }
 
 .banner {
     background-color: #143D59;
-    height: 2vh;
+    height: 3vh;
+    width: 100vw; 
 }
 
 .login-form {
@@ -77,5 +79,5 @@ h2 {
 }
 
 .login-button:hover {
-    background-color: navy;
+    background-color: #6CB4EE;
 }
