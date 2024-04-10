@@ -6,40 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
     <title>Login Form</title>
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background-color: #143D59;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-image: url('orderup.png');
-            background-size: cover;
-            height: 150px;
-        }
-        .banner {
-            background-color: #143D59;
-            height: 10px;
-        }
-        .login-form {
-            margin: 0 auto;
-            width: 300px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 50px;
-        }
-        .footer {
-            background-color: #143D59;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
 <section>
@@ -58,6 +25,5 @@
 </div>
 </section>
 <jsp:include page="../secure/footer.jsp" />
-
-
-
+</body>
+</html>
