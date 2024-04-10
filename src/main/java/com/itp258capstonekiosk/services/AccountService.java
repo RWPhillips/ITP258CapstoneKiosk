@@ -33,7 +33,7 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-	        String checkAccountQuery = "SELECT * FROM accounts WHERE userName = ?";
+	        String checkAccountQuery = "SELECT * FROM accounts WHERE username = ?";
 	        statement = connection.prepareStatement(checkAccountQuery);
 	        statement.setString(1, userName);
 	        resultSet = statement.executeQuery();
