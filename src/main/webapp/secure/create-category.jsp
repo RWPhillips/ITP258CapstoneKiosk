@@ -1,20 +1,37 @@
 <jsp:include page="adminheader.jsp" />
 <section>
-	<div class="categories">
-		<h2>Add a New Item Category</h2>
-		<form action="DataServlet" method="post"> 
-			<label for="addcategory"></label>
-			<input type="text" class="" name="addcategory" maxlength="100">
-			<input type="submit" value="Create">
-		</form>
-		<h2>Delete an Item Category</h2>
-			<p>Only categories with no items can be deleted</p>
-			<form action="DataServlet" method="post"> 
-			<label for="delcategory"></label>
-			<select name="delcategory" class="">
-			</select>
-			<input type="submit" value="Delete">
-		</form>
+	<div class="container">
+		<div class="create">
+			<h2>Create a New Item Category</h2>
+			<form action="DataServlet" method="post" class="createForm"> 
+				<div class="padform">
+					<label for="addCategory">Enter a category name: </label>
+				</div>
+				<div class="padform">
+					<input type="text" class="" name="addCategory" maxlength="100">
+				</div>
+				<div class="padform">
+					<input type="submit" value="Create" class="createButton">
+				</div>
+			</form>
+		</div>
+		<div class="delete">
+				<h2>Delete an Item Category</h2>
+			<form action="DataServlet" method="post" class="createForm"> 
+				<div class="padform">
+					<label for="delCategory">Select a Category to delete:</label>
+				</div>
+				<div class="padform">
+					<select name="delCategory" class="">
+					</select>
+				</div>
+				<p class="reminder">Category must be empty to be deleted.
+				<br>Delete items in the <a href="" class="bodyLink" id="bodyLink">Edit Item Interface</a>.</p>
+				<div class="padform">
+					<input type="submit" value="Delete" class="createButton">
+				</div>
+			</form>
+		</div>
 	</div>
 </section>	
 <jsp:include page="footer.jsp" />
