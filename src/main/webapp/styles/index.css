@@ -23,11 +23,15 @@ h2 {
 }
 
 .header {
-    height: 150px;
-    display: flex;
-    color: white;
-    padding-left: 1vw; 
+	margin-top: 3vh; 
+	padding-left: 2vw; 
     margin-bottom: 3vh; 
+}
+
+.headerImg {
+	box-sizing: border-box; 
+	width: 675px;
+	height: 144px; 
 }
 
 .banner {
