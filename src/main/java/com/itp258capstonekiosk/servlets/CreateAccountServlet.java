@@ -48,11 +48,20 @@ public class CreateAccountServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		String username = request.getParameter("userName");
-        String password = request.getParameter("password");
+        String password = request.getParameter("confirm");
         String accountType = request.getParameter("accType");
+        
+        int accType = 0;
+        
+        if (accountType.equalsIgnoreCase("Administrator"))
+        	accType = 3;
+        else if (accountType.equalsIgnoreCase("Ticket Display"))
+        	accType = 2;
+        else
+        	accType = 1;
 
         AccountService account = new AccountService(dataSource);
-        account.createAccount(username, password, accountType);
+        account.createAccount(username, password, accType);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");

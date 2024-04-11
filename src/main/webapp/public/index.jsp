@@ -18,7 +18,7 @@
         <div class="login-form-container">
             <div class="login-form">
                 <h2>Login</h2>
-                <form>
+                <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
                     <div class="grid-container">
                         <div >
                             <label for="username" class="padForm">Username:</label><br> <input

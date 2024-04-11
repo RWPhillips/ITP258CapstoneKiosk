@@ -5,7 +5,6 @@ public class AccountObject {
 	private int id;
 	private String username;
 	private String password;
-	private String words;
 
 	public AccountObject(String username, String password) {
 		this.username = username;
@@ -34,14 +33,6 @@ public class AccountObject {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getWords() {
-		return words;
-	}
-
-	public void setWords(String words) {
-		this.words = words;
 	}
 
 }
