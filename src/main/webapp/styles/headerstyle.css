@@ -1,8 +1,12 @@
-
-body {
+html {
+	width: 100vw; 
 	padding: 0px; 
 	margin: 0px; 
 	font-family: "Segoe UI", sans-serif;
+}
+
+body {
+
 	width: 99vw; 
 }
 
@@ -18,12 +22,14 @@ a:hover {
 }
 
 .imgPad {
+	box-sizing: border-box; 
 	margin-top: 3vh; 
 	padding-left: 2vw; 
-	width: 98vw; 
+	width: 100vw; 
 }
 
 .nav {
+	box-sizing: border-box; 
 	width: 100vw; 
 }
 

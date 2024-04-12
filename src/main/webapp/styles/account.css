@@ -2,17 +2,15 @@
 	--bgblue: #143D59;
 }
 
-html {
-	width: 100vw; 
-}
-
 body {
 	display: flex;
 	min-height: 100vh; 
 	max-height: 100vh; 
 	flex-direction: column; 
-	width: 100vw; 
 	position: relative; 
+	width: 100vw; 
+	margin: 0px; 
+	overflow-x: hidden; 
 }
 
 h2 {
