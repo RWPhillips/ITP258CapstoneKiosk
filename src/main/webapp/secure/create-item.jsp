@@ -1,5 +1,5 @@
 <jsp:include page="adminheader.jsp" />
-<section>
+<section class="content">
 	<div class="container">
 		<div class="create">
 			<h2>Create an Item</h2>

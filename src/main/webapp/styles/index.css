@@ -1,10 +1,15 @@
+html {
+	width: 99vw; 
+}
+
 body {
     font-family: "Segoe UI", sans-serif;
     background-color: #FFFFFF;
     margin: 0;
     padding: 0;
-    height: 94vh;
-    width: 99vw;
+    height: 100vh;
+    max-width: 100vw;
+    width: 100%;
 }
 
 h2 {
@@ -18,26 +23,29 @@ h2 {
 	margin-bottom: 1vh; 
 }
 
+.banner {
+    background-color: #143D59;
+    height: 3vh;
+    width: 100vw; 
+}
+
+
 .fullscreen {
-    min-height: 94vh;
+    min-height: 91vh;
+    max-width: 99vw; 
 }
 
 .header {
 	margin-top: 3vh; 
 	padding-left: 2vw; 
     margin-bottom: 3vh; 
+    max-width: 99vw;  
 }
 
 .headerImg {
 	box-sizing: border-box; 
 	width: 675px;
 	height: 144px; 
-}
-
-.banner {
-    background-color: #143D59;
-    height: 3vh;
-    width: 100vw; 
 }
 
 .login-form {
@@ -60,7 +68,7 @@ h2 {
     display: grid;
     grid-template-columns: auto;
     gap: 10px;
-    width: 100%; 
+    width: 98%; 
 }
 
 .grid-container>div {

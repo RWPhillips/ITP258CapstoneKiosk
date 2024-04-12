@@ -1,4 +1,4 @@
 <jsp:include page="adminheader.jsp" />
-<section>
+<section class="content">
 </section>
 <jsp:include page="footer.jsp" />

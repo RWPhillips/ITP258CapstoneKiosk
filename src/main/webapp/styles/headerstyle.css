@@ -1,7 +1,9 @@
+
 body {
 	padding: 0px; 
 	margin: 0px; 
-	font-family: "Segoe UI", sans-serif
+	font-family: "Segoe UI", sans-serif;
+	width: 99vw; 
 }
 
 a:link {
@@ -18,10 +20,11 @@ a:hover {
 .imgPad {
 	margin-top: 3vh; 
 	padding-left: 2vw; 
+	width: 98vw; 
 }
 
 .nav {
-	width: 100%; 
+	width: 100vw; 
 }
 
 .header-ul{

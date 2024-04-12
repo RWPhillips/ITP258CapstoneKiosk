@@ -1,8 +1,11 @@
 .footer {
- position: relative; 
- width: 100%; 
+ width: 99vw; 
  padding-left: 1vw; 
  border-top: 1px solid gray; 
  height: 3vh;  
  padding-bottom: 2vh; 
+}
+.footer p {
+	margin-top: 5px; 
+	margin-bottom: 0; 
 }
