@@ -26,7 +26,7 @@
 					</select>
 				</div>
 				<p class="reminder">Category must be empty to be deleted.
-				<br>Delete items in the <a href="" class="bodyLink" id="bodyLink">Edit Item Interface</a>.</p>
+				<br>Delete items in the <a href="" class="bodyLink" id="bodyLink">Manage Items Interface</a>.</p>
 				<div class="padform">
 					<input type="submit" value="Delete" class="createButton">
 				</div>
