@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
 import org.mindrot.jbcrypt.BCrypt;
+
+import com.itp258capstonekiosk.objects.AccountObject;
 
 public class AccountService {
 
@@ -16,6 +19,7 @@ public class AccountService {
 	private PreparedStatement statement;
 	private ResultSet resultSet;
 	private KioskDbUtil database;
+	private AccountObject account;
 
 	public AccountService(DataSource theDataSource) {
 		dataSource = theDataSource;
@@ -63,6 +67,41 @@ public class AccountService {
 	    }
 
 	    return accountCreated;
+	}
+	
+	public ArrayList<AccountObject> getAccounts(String userName) {
+	    
+        ArrayList<AccountObject> accountList = new ArrayList<AccountObject>();
+
+	    try {
+
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+
+	        // Check if the account already exists
+	        String checkAccountQuery = "SELECT userName FROM accounts";
+	        statement = connection.prepareStatement(checkAccountQuery);
+	        resultSet = statement.executeQuery();
+	        
+	        while (resultSet.next())
+	        {
+	        	AccountObject acc = new AccountObject(userName);
+	        	accountList.add(acc);
+	        }
+
+	        if (!resultSet.next()) {
+
+	        	System.out.println("No Accounts Found!");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // Close JDBC objects
+	        database.closeConnection(connection, statement, resultSet);
+	    }
+
+	    return accountList;
 	}
 
 }

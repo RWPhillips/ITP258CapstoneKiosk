@@ -6,6 +6,10 @@ public class AccountObject {
 	private String username;
 	private String password;
 
+	public AccountObject(String username) {
+		this.username = username;
+	}
+	
 	public AccountObject(String username, String password) {
 		this.username = username;
 		this.password = password;
