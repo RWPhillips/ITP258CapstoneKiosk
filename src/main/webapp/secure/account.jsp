@@ -38,12 +38,16 @@
 		</div>
 		<div class="delete">
 			<h2>Delete an Account</h2>
-			<form action="AccountServlet" method="post" class="accountForm">
+			<form action="${pageContext.request.contextPath}/DeleteAccountServlet" method="post" class="accountForm">
 				<div class="padform">
 					<label for="delUser">Select a User: </label>
 				</div>
 				<div class="padform">
 					<select name="delUser" class="">
+					<jsp: include page=""${pageContext.request.contextPath}/DeleteAccountServlet" />
+					<c: forEach items="${}" var="item">
+						<option value="${item}">${item}</option>
+					</c: forEach*/>
 					</select><br>
 				</div>
 				<div class="padform">
