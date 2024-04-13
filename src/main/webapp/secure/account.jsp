@@ -1,4 +1,5 @@
 <jsp:include page="adminheader.jsp" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <section class="content">
 	<div class="accounts">
 		<div class="create">
@@ -44,10 +45,10 @@
 				</div>
 				<div class="padform">
 					<select name="delUser" class="">
-					<jsp: include page=""${pageContext.request.contextPath}/DeleteAccountServlet" />
-					<c: forEach items="${}" var="item">
+					<jsp:include page="${pageContext.request.contextPath}/GetAccountServlet" />
+					<c:forEach items="${accounts}" var="item">
 						<option value="${item}">${item}</option>
-					</c: forEach*/>
+					</c:forEach*>
 					</select><br>
 				</div>
 				<div class="padform">

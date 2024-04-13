@@ -58,7 +58,7 @@ public class GetAccountServlet extends HttpServlet {
         
         // Store session w/ status
         HttpSession session = request.getSession(true);
-        session.setAttribute("deleteStatus", accountList); 
+        session.setAttribute("accounts", accountList); 
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
