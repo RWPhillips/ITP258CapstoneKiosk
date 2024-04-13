@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.sql.DataSource;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -107,7 +108,9 @@ public class AccountService {
 	    return accountList;
 	}
 	
-	public void deleteAccount(String userName, String password) {
+	public String deleteAccount(String userName, String password) {
+		
+		String status = "";
 		
 	    try {
 
@@ -127,8 +130,14 @@ public class AccountService {
 	
 		        if (rowsAffected > 0) {
 		        	// If account found
-		        	System.out.println("Account Deleted!");
+		        	status = "Account Deleted!";
 		        }
+		        else {
+		        	status = "Something went wrong. Try again later.";
+		        }
+		    }
+		    else {
+		    	status = "Account doesn't exist. Please refresh and try again!";
 		    }
 		    
 	    } catch (SQLException e) {
@@ -137,6 +146,8 @@ public class AccountService {
 	        // Close JDBC objects
 	        database.closeConnection(connection, statement, resultSet);
 	    }
+	    
+	    return status;
 	    
 	}
 
