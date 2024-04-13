@@ -1,6 +1,8 @@
 package com.itp258capstonekiosk.objects;
 
-public class AccountObject {
+import java.io.Serializable;
+
+public class AccountObject implements Serializable{
 
 	private int id;
 	private String username;

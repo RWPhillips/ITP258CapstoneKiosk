@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../styles/headerstyle.css">
 <link rel="stylesheet" href="../styles/account.css">
 <link rel="stylesheet" href="../styles/footer.css">
+<script src="https://unpkg.com/htmx.org@1.9.3"></script>
 
 
 

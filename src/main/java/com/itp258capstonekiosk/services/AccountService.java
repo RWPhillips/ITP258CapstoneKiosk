@@ -85,18 +85,20 @@ public class AccountService {
 	        statement = connection.prepareStatement(checkAccountQuery);
 	        resultSet = statement.executeQuery();
 	        
+	       /* if (!resultSet.next()) {
+	        	// If no accounts
+	        	System.out.println("No Accounts Found!");
+	        }*/
+	        
 	        // Go through results
 	        while (resultSet.next())
 	        {
 	        	// Add account to list
-	        	AccountObject acc = new AccountObject(userName);
+	        	AccountObject acc = new AccountObject(resultSet.getString(1));
 	        	accountList.add(acc);
 	        }
 
-	        if (!resultSet.next()) {
-	        	// If no accounts
-	        	System.out.println("No Accounts Found!");
-	        }
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {

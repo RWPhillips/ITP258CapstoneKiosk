@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <jsp:include page="adminheader.jsp" />
 <section class="content">
 	<div class="accounts">
@@ -47,10 +48,9 @@
 					<label for="delUser">Select a User: </label>
 				</div>
 				<div class="padform">
-					<select name="delUser" class="">
-					<jsp:include page="${pageContext.request.contextPath}/GetAccountServlet" />
+			<select name="delUser" class="" hx-trigger="load" hx-post="${pageContext.request.contextPath}/GetAccountServlet" >
 					<c:forEach items="${accounts}" var="item">
-						<option value="${item}">${item}</option>
+						<option value="${item.username}">${item.username}</option>
 					</c:forEach>
 					</select><br>
 				</div>

@@ -56,13 +56,21 @@ public class GetAccountServlet extends HttpServlet {
         // Get status when deleting account
         ArrayList<AccountObject> accountList = account.getAccounts(username);
         
+        
+        
+        for (AccountObject acc : accountList) {
+        	System.out.println(acc.getUsername());
+        }
+     
+        
         // Store session w/ status
         HttpSession session = request.getSession(true);
         session.setAttribute("accounts", accountList); 
+        
 
         // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
- 		dispatcher.forward(request, response);
+ 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
+ 		//dispatcher.forward(request, response);
 	}
 
 }
