@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.AccountObject;
@@ -39,7 +37,31 @@ public class GetAccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		// Get user name from the database
+		String username = request.getParameter("userName");
+
+		// Get the account service
+        AccountService account = new AccountService(dataSource);
+        
+        // Get status when deleting account (this no longer works, as we are not returning anything)
+        ArrayList<AccountObject> accountList = account.getAccounts(username);
+
+	    // Get ready to generate options with StringBuilder
+	    StringBuilder options = new StringBuilder();
+	    
+	    // Go through each account in the array
+	    for (AccountObject acc : accountList) {
+	    	
+	    	// Build the options string
+	        options.append("<option value=\"").append(acc.getUsername()).append("\">").append(acc.getUsername()).append("</option>");
+	    }
+
+	    // Set content type
+	    response.setContentType("text/html");
+	    
+	    // Write the options to the response
+	    response.getWriter().write(options.toString());
 	}
 
 	/**
@@ -48,29 +70,6 @@ public class GetAccountServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		String username = request.getParameter("userName");
-
-        AccountService account = new AccountService(dataSource);
-        
-        // Get status when deleting account
-        ArrayList<AccountObject> accountList = account.getAccounts(username);
-        
-        
-        
-        for (AccountObject acc : accountList) {
-        	System.out.println(acc.getUsername());
-        }
-     
-        
-        // Store session w/ status
-        HttpSession session = request.getSession(true);
-        session.setAttribute("accounts", accountList); 
-        
-
-        // Send to JSP page
- 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
- 		//dispatcher.forward(request, response);
 	}
 
 }

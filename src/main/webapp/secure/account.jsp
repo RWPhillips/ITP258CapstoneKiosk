@@ -25,16 +25,16 @@
 					<option value="Administrator">Administrator</option>
 				</select></div>
 				<div class="padform">
-					<label for="password">Enter a Password:</label><br>
+					<label for="createPass">Enter a Password:</label><br>
 				</div>
 				<div class="padform">
-					<input type="password" class="password" name="password " maxlength="100" required pattern="^[\\p{ASCII}&&[\\S]]{8,}$" title=" Password must be a a minimum of 8 characters.">
+					<input type="password" class="" name="createPass" maxlength="100" required pattern="^[\\p{ASCII}&&[\\S]]{8,}$" title="Password must be a minimum of 8 characters.">
 				</div>
 				<div class="padform">
-					<label for ="confirm">Re-enter the Password:</label><br>
+					<label for ="confirmCreate">Re-enter the Password:</label><br>
 				</div>
 				<div class="padform">
-					<input type="password" class="" name="confirm" maxlength="100"><br>
+					<input type="password" class="" name="confirmCreate" maxlength="100"><br>
 				</div>
 				<div class="padform">
 					<input class="accountButton" type="submit" value="Create">
@@ -48,17 +48,16 @@
 					<label for="delUser">Select a User: </label>
 				</div>
 				<div class="padform">
-			<select name="delUser" class="" hx-trigger="load" hx-post="${pageContext.request.contextPath}/GetAccountServlet" >
-					<c:forEach items="${accounts}" var="item">
-						<option value="${item.username}">${item.username}</option>
-					</c:forEach>
+					<select name="delUser" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetAccountServlet" >
+						<!-- When hx-get does its thing, the options are automatically returned as the request from the Servlet -->
+						<!-- I really recommend looking at how it's done in the GetAccountServlet, very cool stuff. -->
 					</select><br>
 				</div>
 				<div class="padform">
-					<label for="password">Enter Password to Confirm: </label>
+					<label for="deletePass">Enter Password to Confirm: </label>
 				</div>
 				<div class="padform">
-					<input type="password" name="password" class="">
+					<input type="password" name="deletePass" class="">
 				</div>
 				<div class="padform">
 					<input class="accountButton" type="submit" value="Delete">
@@ -67,22 +66,22 @@
 		</div>
 		<div class="update">
 			<h2>Update Account Password</h2>
-			<form action="AccountServlet" method="post" class="accountForm">
+			<form action="${pageContext.request.contextPath}/UpdatePasswordServlet" method="post" class="accountForm">
 				<div class="padform">
 					<label for="updateUser">Select a User: </label>
 				</div>
 				<div class="padform">	
-					<select name="updateUser">
+					<select name="updateUser" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetAccountServlet" >
 					</select><br>
 				</div>
 				<div class="padform">
-					<label for="updatePass">Enter New Password:</label><br>
+					<label for="updatePass">Current Password:</label><br>
 				</div>
 				<div class="padform">
 					<input type="password" name="updatePass" class="password">
 				</div>
 				<div class="padform">
-					<label for="confirmUpdate">Re-enter Password: </label>
+					<label for="confirmUpdate">New Password: </label>
 				</div>
 				<div class="padform">
 					<input type="password" name="confirmUpdate"><br>

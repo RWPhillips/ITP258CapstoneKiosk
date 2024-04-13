@@ -47,12 +47,16 @@ public class CreateAccountServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		// Get data from form
 		String username = request.getParameter("userName");
-        String password = request.getParameter("confirm");
+		String password = request.getParameter("createPass");
+        String confirmPassword = request.getParameter("confirmCreate");
         String accountType = request.getParameter("accType");
         
+        // Initialize int for account type
         int accType = 0;
         
+        // Pick correct account
         if (accountType.equalsIgnoreCase("Administrator"))
         	accType = 3;
         else if (accountType.equalsIgnoreCase("Ticket Display"))
@@ -60,8 +64,9 @@ public class CreateAccountServlet extends HttpServlet {
         else
         	accType = 1;
 
+        // Create account
         AccountService account = new AccountService(dataSource);
-        account.createAccount(username, password, accType);
+        account.createAccount(username, password, confirmPassword, accType);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");

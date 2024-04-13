@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.sql.DataSource;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -26,7 +25,7 @@ public class AccountService {
 		dataSource = theDataSource;
 	}
 
-	public boolean createAccount(String userName, String userPassword, int accountTypeID) {
+	public boolean createAccount(String userName, String userPassword, String confirmPassword, int accountTypeID) {
 
 	    // For checking if the account was created
 	    boolean accountCreated = false;
@@ -45,20 +44,23 @@ public class AccountService {
 
 	        if (!resultSet.next()) {
 
-	        	// Hash the password
-	            String hashedPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());     
-
-	            // The account doesn't exist, create it
-	            String createAccountQuery = "INSERT INTO accounts (userName, userPassword, accountTypeID) VALUES (?, ?, ?)";
-	            statement = connection.prepareStatement(createAccountQuery);
-	            statement.setString(1, userName);
-	            statement.setString(2, hashedPassword);
-	            statement.setInt(3, accountTypeID);
-
-	            int rowsInserted = statement.executeUpdate();
-	            if (rowsInserted > 0) {
-	                accountCreated = true;
-	            }
+	        	if (userPassword.equals(confirmPassword)) {
+	        	
+		        	// Hash the password
+		            String hashedPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());     
+	
+		            // The account doesn't exist, create it
+		            String createAccountQuery = "INSERT INTO accounts (userName, userPassword, accountTypeID) VALUES (?, ?, ?)";
+		            statement = connection.prepareStatement(createAccountQuery);
+		            statement.setString(1, userName);
+		            statement.setString(2, hashedPassword);
+		            statement.setInt(3, accountTypeID);
+	
+		            int rowsInserted = statement.executeUpdate();
+		            if (rowsInserted > 0) {
+		                accountCreated = true;
+		            }
+	        	}
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -112,6 +114,10 @@ public class AccountService {
 	
 	public String deleteAccount(String userName, String password) {
 		
+		// Testing!
+		System.out.println("Account to Delete: " + userName);
+		
+		// Status string
 		String status = "";
 		
 	    try {
@@ -121,13 +127,15 @@ public class AccountService {
 		    connection = database.getConnection();
 
 		    // Validate the user name and hashed password against the database
+		    login = new LoginService(dataSource);
 		    boolean validLogin = login.validateUser(userName, password);
 
 		    if (validLogin) {
+		    	
 		        // Check for account
-		        String checkAccountQuery = "DELETE FROM accounts WHERE userName = ?";
+		        String deleteAccountQuery = "DELETE FROM accounts WHERE userName = ?";
+		        statement = connection.prepareStatement(deleteAccountQuery);
 		        statement.setString(1, userName);
-		        statement = connection.prepareStatement(checkAccountQuery);
 		        int rowsAffected = statement.executeUpdate();
 	
 		        if (rowsAffected > 0) {
@@ -139,7 +147,62 @@ public class AccountService {
 		        }
 		    }
 		    else {
-		    	status = "Account doesn't exist. Please refresh and try again!";
+		    	status = "Invalid Login or Account Doesn't Exist!";
+		    }
+		    
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // Close JDBC objects
+	        database.closeConnection(connection, statement, resultSet);
+	    }
+	    
+	    return status;
+	    
+	}
+	
+public String updatePassword(String userName, String userPassword, String newPassword) {
+		
+		// Testing!
+		System.out.println("Account to Update: " + userName);
+		
+		// Status string
+		String status = "";
+		
+	    try {
+
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+
+		    // Validate the user name and hashed password against the database
+		    login = new LoginService(dataSource);
+		    boolean validLogin = login.validateUser(userName, userPassword);
+
+		    if (validLogin) {
+		    	
+		    	// Hash the password
+	            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt()); 
+		    	
+		        // Check for account
+	            String updatePasswordQuery = "UPDATE accounts SET userPassword = ? WHERE userName = ?";
+		        statement = connection.prepareStatement(updatePasswordQuery);
+		        
+		        // Update to new hashed password
+		        statement.setString(1, hashedPassword);
+		        statement.setString(2, userName);
+		        int rowsAffected = statement.executeUpdate();
+	
+		        if (rowsAffected > 0) {
+		        	// If account found
+		        	status = "Password Changed!";
+		        }
+		        else {
+		        	status = "Something went wrong. Try again later.";
+		        }
+		    }
+		    else {
+		    	status = "Invalid Login or Account Doesn't Exist!";
 		    }
 		    
 	    } catch (SQLException e) {
