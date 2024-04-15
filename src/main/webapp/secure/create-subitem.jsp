@@ -23,12 +23,7 @@
 				<div class="padform">
 					<input type="text" class="" name="itemCost" maxlength="100">
 				</div>
-				<div class="padform">
-					<label for="itemImage">Upload an Image for the Item:</label>
-				</div>
-				<div class="padform">
-					<input type="file" class="" name="itemImage" maxlength="100" accept="image/*" >
-				</div>
+
 				<div class="padform">
 					<label for="itemDescription">Enter an item description:</label>
 				</div>

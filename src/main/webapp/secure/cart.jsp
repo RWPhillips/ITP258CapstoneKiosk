@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<section class="cart">
+	
+	
+	</section>
+
 
 </body>
 </html>
