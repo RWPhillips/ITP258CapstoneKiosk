@@ -41,7 +41,6 @@ public class AccountService {
 		    callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
 		    callableStatement.setString(1, userName);
 	        resultSet = callableStatement.executeQuery();
-	        callableStatement.close();
 
 	        if (!resultSet.next()) {
 
