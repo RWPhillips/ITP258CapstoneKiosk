@@ -1,17 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<section class="cart">
+
+<div class="cart">
+	<h2>Your Orders</h2>
 	
+	<div class="total">
+	Your order total: 
+	</div>
 	
-	</section>
+</div>
 
 
-</body>
-</html>

@@ -1,0 +1,12 @@
+.cart {
+	background-color: #d3d3d3; 
+	height: 80vh; 
+	position: relative; 
+}
+.total {
+	position: absolute; 
+	bottom: 0;
+	left: 0; 
+	padding-bottom: 2vh;
+	padding-left: 1vw; 
+}
