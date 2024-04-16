@@ -17,7 +17,7 @@ public class AccountService {
 
 	private DataSource dataSource;
 	private Connection connection;
-	private PreparedStatement statement;
+	private CallableStatement callableStatement;
 	private ResultSet resultSet;
 	private KioskDbUtil database;
 	private LoginService login;
@@ -38,9 +38,10 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-		    CallableStatement callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
+		    callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
 		    callableStatement.setString(1, userName);
-	        resultSet = statement.executeQuery();
+	        resultSet = callableStatement.executeQuery();
+	        callableStatement.close();
 
 	        if (!resultSet.next()) {
 
@@ -50,13 +51,12 @@ public class AccountService {
 		            String hashedPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());     
 	
 		            // The account doesn't exist, create it
-		            String createAccountQuery = "INSERT INTO accounts (userName, userPassword, accountTypeID) VALUES (?, ?, ?)";
-		            statement = connection.prepareStatement(createAccountQuery);
-		            statement.setString(1, userName);
-		            statement.setString(2, hashedPassword);
-		            statement.setInt(3, accountTypeID);
+		            callableStatement = connection.prepareCall("{CALL createAccount(?, ?, ?)}");
+		            callableStatement.setString(1, userName);
+		            callableStatement.setString(2, hashedPassword);
+		            callableStatement.setInt(3, accountTypeID);
 	
-		            int rowsInserted = statement.executeUpdate();
+		            int rowsInserted = callableStatement.executeUpdate();
 		            if (rowsInserted > 0) {
 		                accountCreated = true;
 		            }
@@ -66,7 +66,7 @@ public class AccountService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 
 	    return accountCreated;
@@ -83,9 +83,9 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-	        String checkAccountQuery = "SELECT userName FROM accounts";
-	        statement = connection.prepareStatement(checkAccountQuery);
-	        resultSet = statement.executeQuery();
+		    callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
+		    callableStatement.setString(1, userName);
+	        resultSet = callableStatement.executeQuery();
 	        
 	       /* if (!resultSet.next()) {
 	        	// If no accounts
@@ -105,7 +105,7 @@ public class AccountService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 
 	    // Return accounts
@@ -133,10 +133,9 @@ public class AccountService {
 		    if (validLogin) {
 		    	
 		        // Check for account
-		        String deleteAccountQuery = "DELETE FROM accounts WHERE userName = ?";
-		        statement = connection.prepareStatement(deleteAccountQuery);
-		        statement.setString(1, userName);
-		        int rowsAffected = statement.executeUpdate();
+		        callableStatement = connection.prepareCall("{CALL deleteAccount(?)}");
+		        callableStatement.setString(1, userName);
+		        int rowsAffected = callableStatement.executeUpdate();
 	
 		        if (rowsAffected > 0) {
 		        	// If account found
@@ -154,14 +153,14 @@ public class AccountService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	    
 	    return status;
 	    
 	}
 	
-public String updatePassword(String userName, String userPassword, String newPassword) {
+	public String updatePassword(String userName, String userPassword, String newPassword) {
 		
 		// Testing!
 		System.out.println("Account to Update: " + userName);
@@ -185,13 +184,12 @@ public String updatePassword(String userName, String userPassword, String newPas
 	            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt()); 
 		    	
 		        // Check for account
-	            String updatePasswordQuery = "UPDATE accounts SET userPassword = ? WHERE userName = ?";
-		        statement = connection.prepareStatement(updatePasswordQuery);
+	            callableStatement = connection.prepareCall("{CALL updatePassword(?, ?)}");
 		        
 		        // Update to new hashed password
-		        statement.setString(1, hashedPassword);
-		        statement.setString(2, userName);
-		        int rowsAffected = statement.executeUpdate();
+	            callableStatement.setString(1, userName);
+	            callableStatement.setString(2, hashedPassword);
+		        int rowsAffected = callableStatement.executeUpdate();
 	
 		        if (rowsAffected > 0) {
 		        	// If account found
@@ -209,7 +207,7 @@ public String updatePassword(String userName, String userPassword, String newPas
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	    
 	    return status;

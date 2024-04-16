@@ -2,7 +2,6 @@ package com.itp258capstonekiosk.services;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,7 +13,7 @@ public class ItemService {
 	
 	private DataSource dataSource;
 	private Connection connection;
-	private PreparedStatement statement;
+	private CallableStatement callableStatement;
 	private ResultSet resultSet;
 	private KioskDbUtil database;
 
@@ -48,7 +47,7 @@ public class ItemService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 
 	    return item;
@@ -77,7 +76,7 @@ public class ItemService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 
 	    return subItem;
@@ -99,7 +98,7 @@ public class ItemService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	}
 	
@@ -119,7 +118,7 @@ public class ItemService {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
-	        database.closeConnection(connection, statement, resultSet);
+	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	}
 	

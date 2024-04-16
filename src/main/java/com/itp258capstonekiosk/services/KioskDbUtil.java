@@ -1,5 +1,6 @@
 package com.itp258capstonekiosk.services;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -51,7 +52,7 @@ public class KioskDbUtil {
         return connection;
     }
 
-    public void closeConnection(Connection connection, Statement statement, ResultSet resultSet) {
+    public void closeConnection(Connection connection, CallableStatement statement, ResultSet resultSet) {
         try {
             if (resultSet != null) {
                 resultSet.close();
