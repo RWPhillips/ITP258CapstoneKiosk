@@ -9,33 +9,52 @@ body, html {
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 95%;
+    height: 94%;
     position: relative;
-    z-index: -1;
 }
 
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 5%;
+    height: 6%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: grid;
-    grid-template-columns: 1fr auto; 
+    display: flex;
+    align-items: center; /* Vertically center items */
     color: rgba(255, 255, 255, 0.8);
     z-index: 2;
+    padding: 0 10px; /* Adjusted padding for the footer */
 }
 
 .footer-content {
-    text-align: center;
-}
-
-.continue-text {
-    font-size: 24px;
-    font-weight: bold;
+    display: flex;
+    flex: 0.6; /* Take up remaining space */
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center;
 }
 
 .copyright {
+    font-family: "Segoe UI", sans-serif;
     font-size: 12px;
     text-align: left; 
+}
+
+.continue-button {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #143D59;
+    border: none;
+    color: white;
+    padding: 6px 9px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.continue-button:hover {
+    background-color: #6CB4EE;
 }
