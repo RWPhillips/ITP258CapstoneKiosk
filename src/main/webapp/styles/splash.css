@@ -5,7 +5,7 @@ body, html {
 }
 
 .background-image {
-    background-image: url('../images/foodsplash.png');
+    background-image: url('${pageContext.request.contextPath}/images/foodsplash.png');
     background-size: cover;
     background-position: center;
     width: 100%;
