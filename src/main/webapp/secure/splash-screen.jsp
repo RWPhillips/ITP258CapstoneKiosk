@@ -14,8 +14,7 @@
 	</div>
 	<footer class="footer">
 		<div class="footer-content">
-			<p class="copyright">Copyright �2024 Team-One Associates, Inc.
-				All rights reserved.</p>
+			<p class="copyright">Copyright &copy;2024 Team-One Associates, Inc. All rights reserved.</p>
 			<button class="continue-button">Tap anywhere to continue</button>
 		</div>
 	</footer>
