@@ -9,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/splash.css">
 </head>
 <body>
-	<div class="background-image"></div>
+	<div class="background-image">
+		<img class="bgimg" src="${pageContext.request.contextPath}/images/foodsplash.png">
+	</div>
 	<footer class="footer">
 		<div class="footer-content">
 			<p class="copyright">Copyright �2024 Team-One Associates, Inc.
