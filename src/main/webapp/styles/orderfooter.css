@@ -1,4 +1,24 @@
+button {
+	align-items: right; 
+	margin-right: 1vw; 
+	margin-top: 1vw;
+	margin-bottom: 1vw;  
+	width: 17.5vw; 
+	background-color:  #143D59;
+	color: white; 
+}
+
 .footer {
 	border-top: 2px solid; 
 	height: 10vh; 
+	display: grid; 
+	grid-template-columns: 1fr auto; 
+	width: 100%; 
 }
+
+.copyright {
+	align-self: end; 
+	margin-left: .5vw; 
+	font-size: 1vh; 
+}
+

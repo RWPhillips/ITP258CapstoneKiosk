@@ -13,10 +13,8 @@
 	<footer class="footer">
 		<div class="footer-content">
 			<p class="continue-text">Tap anywhere to continue</p>
-			<div>
-				<p class="copyright">Copyright ©2024 Team-One Associates, Inc.
+			<p class="copyright">Copyright ©2024 Team-One Associates, Inc.
 					All rights reserved.</p>
-			</div>
 		</div>
 	</footer>
 
