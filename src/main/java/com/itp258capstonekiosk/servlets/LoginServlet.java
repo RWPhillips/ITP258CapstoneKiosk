@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 	        System.out.println("Your login is valid!");
 	        
 	        // Send to JSP page
-	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/admin.jsp");
+	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/account.jsp");
 	 		dispatcher.forward(request, response);
 	        
 	    } else {

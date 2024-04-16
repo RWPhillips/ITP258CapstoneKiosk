@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="../styles/index.css">
-    <link rel="stylesheet" type="text/css" href="../styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/footer.css">
 </head>
 <body>
     <section class="fullscreen">
         <div class="header">
-            <img src="../images/orderup.png" class="headerImg">
+            <img src="${pageContext.request.contextPath}/images/orderup.png" class="headerImg">
         </div>
         <div class="banner"></div>
         <div class="login-form-container">

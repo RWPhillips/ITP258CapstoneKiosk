@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="../styles/cart.css">
-<link rel="stylesheet" href="../styles/order.css">
-<link rel="stylesheet" href="../styles/category.css">
-<link rel="stylesheet" href="../styles/orderfooter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/cart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/order.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/category.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/orderfooter.css">
 
 <title>Select a Category</title>
 </head>
@@ -20,7 +20,7 @@
 
 		<section>
 		<div class="content">
-			<h2>Content</h2>
+			<h2 class="title"></h2>
 		</div>
 	
 		</section>
