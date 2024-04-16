@@ -1,5 +1,6 @@
 package com.itp258capstonekiosk.services;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,9 +38,8 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-	        String checkAccountQuery = "SELECT * FROM accounts WHERE username = ?";
-	        statement = connection.prepareStatement(checkAccountQuery);
-	        statement.setString(1, userName);
+		    CallableStatement callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
+		    callableStatement.setString(1, userName);
 	        resultSet = statement.executeQuery();
 
 	        if (!resultSet.next()) {
