@@ -1,5 +1,5 @@
 <div class="category">
-	<h2>Select Category</h2>
+	<h2></h2>
 </div>
 
 

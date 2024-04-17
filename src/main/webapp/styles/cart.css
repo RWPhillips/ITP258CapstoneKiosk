@@ -1,7 +1,9 @@
 .cart {
-	background-color: #d3d3d3; 
-	height: 80vh; 
+	height: 75vh; 
 	position: relative; 
+	border-left: 1vw solid #EA563C; 
+	background-color: white; 
+	margin-right: 1vw; 
 }
 .total {
 	position: absolute; 
@@ -9,4 +11,5 @@
 	left: 0; 
 	padding-bottom: 2vh;
 	padding-left: 1vw; 
+	font-weight: 500; 
 }

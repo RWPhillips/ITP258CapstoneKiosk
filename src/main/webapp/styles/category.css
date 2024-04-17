@@ -1,4 +1,7 @@
 .category {
-	background-color: #d3d3d3; 
-	height: 80vh; 
+	height: 75vh; 
+	background: white; 
+	margin-left: .5vw; 
+	border-right: 1px solid #EA563C; 
+
 }

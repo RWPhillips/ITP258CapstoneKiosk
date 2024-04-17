@@ -1,9 +1,9 @@
 
 <div class="cart">
-	<h2>Your Orders</h2>
+	<h2>Your Order</h2>
 	
 	<div class="total">
-	Your order total: 
+	Order total: 
 	</div>
 	
 </div>
