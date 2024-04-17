@@ -23,16 +23,16 @@ body, html {
     height: 6%;
     background-color: #EA563C; 
     display: flex;
-    align-items: center; /* Vertically center items */
+    align-items: center;
     color: rgba(255, 255, 255, 0.8);
     z-index: 2;
-    padding: 0 10px; /* Adjusted padding for the footer */
+    padding: 0 10px;
 }
 
 .footer-content {
     display: flex;
-    flex: .6; /* Take up remaining space */
-    justify-content: space-between; /* Distribute items evenly */
+    flex: .6;
+    justify-content: space-between;
     align-items: center;
 }
 
