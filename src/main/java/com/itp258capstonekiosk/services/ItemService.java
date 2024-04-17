@@ -82,7 +82,7 @@ public class ItemService {
 	    return subItem;
 	}
 	
-	public void createCategory(String name) {
+	public void createCategory(String name, String url) {
 		
 	    try {
 
@@ -90,9 +90,11 @@ public class ItemService {
 		    database = new KioskDbUtil(dataSource);
 		    connection = database.getConnection();
 	
-            // The account doesn't exist, create it
-            CallableStatement callableStatement = connection.prepareCall("{CALL createNewCategory(?)}");
+            // create a new category
+            CallableStatement callableStatement = connection.prepareCall("{CALL createNewCategory(?, ?)}");
             callableStatement.setString(1, name);
+            callableStatement.setString(2, url);
+            callableStatement.execute(); ;
 	            
 	    } catch (SQLException e) {
 	        e.printStackTrace();

@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create a New Item Category</h2>
-			<form action="${pageContext.request.contextPath}/CreateCategoryServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateCategoryServlet" method="post" class="createForm" enctype="multipart/form-data"> 
 				<div class="padform">
 					<label for="addCategory">Enter a category name: </label>
 				</div>
@@ -14,7 +14,7 @@
 					<label for="itemImage">Upload an Image for the Category:</label>
 				</div>
 				<div class="padform">
-					<input type="file" class="" name="categoryImage" maxlength="100" accept="image/*" >
+					<input type="file" class="" name="img" maxlength="100" accept="image/*"  >
 				</div>
 				<div class="padform">
 					<input type="submit" value="Create" class="createButton">
