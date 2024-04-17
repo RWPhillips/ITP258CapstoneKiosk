@@ -67,8 +67,6 @@ public class CreateCategoryServlet extends HttpServlet {
 		 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
 		 		dispatcher.forward(request, response);
 		 		
-
-
 				doGet(request, response);
 	}
 

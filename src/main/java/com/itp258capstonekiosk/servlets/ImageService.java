@@ -49,14 +49,14 @@ public class ImageService{
         //get the location of the folder
 
         String location = null; 
-    	location = System.getProperty("catalina.home");
+
     	
         //check to see if its a windows os
         if (os.contains("win")) {
         	System.out.println("windows os");
         	//check to see if a folder exists
 
-        	location = location + "\\orderUp\\images\\categories";
+        	location = "C:\\orderUp\\images\\categories";
 
         	File folder = new File(location);
         	if (folder.exists()) {
@@ -69,7 +69,8 @@ public class ImageService{
         }
         else if (os.contains("nix") || os.contains("nux") || os.contains("aix")) {
         	System.out.println("linux"); 
-        	location = location + "/orderUp/images/categories";
+        	
+        	location = "/srv/www/orderUp/images/categories";
         }
         
 
