@@ -53,25 +53,19 @@ public class CreateCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get data from form
-				String name = request.getPart("addCategory").toString(); 
-				String url = request.getPart("img").toString(); 
-				Part filePart = request.getPart("img");
-				
-				System.out.println(url);
+				String name = request.getParameter("category"); 
 				System.out.println(name); 
-		        
-		        // Initialize int for account type
+				
+				//call the image service to add the image to the web server
+				String url = ImageService.handleImageUpload(request, response);	
+				
+		        // call the itemservice to create the category in the database. 
 				ItemService cat = new ItemService(dataSource);
-				//cat.createCategory(name, url);
+				cat.createCategory(name, url);
 				
-				//get the servlet context, pass it into the image service
-				 ServletContext context = getServletContext();
-				
-				ImageService.handleImageUpload(request, response, context);
-
 		        // Send to JSP page
-		 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
-		 		//dispatcher.forward(request, response);
+		 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+		 		dispatcher.forward(request, response);
 		 		
 
 

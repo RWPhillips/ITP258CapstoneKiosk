@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/footer.css">
 <script src="https://unpkg.com/htmx.org@1.9.3"></script>
 
-
-
 </head>
 <body>
 	<div class="imgPad"> 

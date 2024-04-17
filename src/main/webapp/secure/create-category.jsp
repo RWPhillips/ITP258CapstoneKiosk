@@ -5,10 +5,10 @@
 			<h2>Create a New Item Category</h2>
 			<form action="${pageContext.request.contextPath}/CreateCategoryServlet" method="post" class="createForm" enctype="multipart/form-data"> 
 				<div class="padform">
-					<label for="addCategory">Enter a category name: </label>
+					<label for="category">Enter a category name: </label>
 				</div>
 				<div class="padform">
-					<input type="text" class="" name="addCategory" maxlength="100">
+					<input type="text" class="" name="category" maxlength="100">
 				</div>
 				<div class="padform">
 					<label for="itemImage">Upload an Image for the Category:</label>
