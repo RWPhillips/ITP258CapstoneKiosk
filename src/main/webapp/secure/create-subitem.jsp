@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create an Item</h2>
-			<form action="DataServlet" method="post" class="createForm"> 
+			<form action="CreateItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select an subitem category:</label>
 				</div>
@@ -37,7 +37,7 @@
 		</div>
 		<div class="delete">
 				<h2>Delete an Item</h2>
-			<form action="DataServlet" method="post" class="createForm"> 
+			<form action="CreateItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="selectCat">Select an item Category</label>
 				</div>
