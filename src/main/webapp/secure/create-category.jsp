@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create a New Item Category</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateCategoryServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="addCategory">Enter a category name: </label>
 				</div>

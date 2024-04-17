@@ -3,6 +3,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+         
+    <servlet>
+		<servlet-name>CreateCategoryServlet</servlet-name>
+		<servlet-class>com.itp258capstonekiosk.servlets.CreateCategoryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateCategoryServlet</servlet-name>
+		<url-pattern>/createCategory</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>public/index.jsp</welcome-file>
 	</welcome-file-list>
