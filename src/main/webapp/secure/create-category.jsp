@@ -11,6 +11,12 @@
 					<input type="text" class="" name="addCategory" maxlength="100">
 				</div>
 				<div class="padform">
+					<label for="itemImage">Upload an Image for the Category:</label>
+				</div>
+				<div class="padform">
+					<input type="file" class="" name="categoryImage" maxlength="100" accept="image/*" >
+				</div>
+				<div class="padform">
 					<input type="submit" value="Create" class="createButton">
 				</div>
 			</form>
