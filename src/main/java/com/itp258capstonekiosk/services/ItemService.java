@@ -2,12 +2,14 @@ package com.itp258capstonekiosk.services;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import com.itp258capstonekiosk.objects.CategoryObject;
 import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.objects.SubItemObject;
 
@@ -229,5 +231,45 @@ public class ItemService {
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	}
+	
+	public ArrayList<CategoryObject> getFullCategory() {
+        ArrayList<CategoryObject> categories = new ArrayList<>();
+        
+        try {
+            // Connect to the database
+            database = new KioskDbUtil(dataSource);
+            connection = database.getConnection();
+            
+            // Prepare the SQL statement to get category details
+            //PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM categories");
+            // Leaving it in case we need it ?
+            
+            CallableStatement callableStatement = connection.prepareCall("{CALL getFullCategory()}");
+            
+            // Execute the query
+            resultSet = callableStatement.executeQuery();
+            
+            // Process the result set
+            while (resultSet.next()) {
+                int categoryId = resultSet.getInt("category_id");
+                String imageURL = resultSet.getString("image_url");
+                String name = resultSet.getString("name");
+                
+                // Create CategoryObject instance
+                CategoryObject category = new CategoryObject(categoryId, imageURL, name);
+                
+                // Add category to the ArrayList
+                categories.add(category);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close JDBC objects
+            database.closeConnection(connection, callableStatement, resultSet);
+        }
+        
+        return categories;
+    }
+	
 }
 
