@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 public class ImageService{
 	
-    public static String handleImageUpload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void handleImageUpload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	// Check if the request is multipart
         if (!ServletFileUpload.isMultipartContent(request)) {
@@ -25,7 +25,7 @@ public class ImageService{
             response.getWriter().println("Error: Request is not multipart");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             System.out.println("request not multipart");
-            return "ERROR NOT MULTIPART"; 
+            
         }
 
         // Get the part for the image file
@@ -37,7 +37,7 @@ public class ImageService{
             response.getWriter().println("Error: No file uploaded");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             System.out.println("no file");
-            return "ERROR, NO FILE";
+            
         }
 
         // Get the filename and content type
@@ -48,15 +48,15 @@ public class ImageService{
         String os = System.getProperty("os.name").toLowerCase(); 
         //get the location of the folder
 
-        String location = null; 
-
+        String location = System.getProperty("catalina.home"); 
+        
     	
         //check to see if its a windows os
         if (os.contains("win")) {
         	System.out.println("windows os");
         	//check to see if a folder exists
 
-        	location = "C:\\orderUp\\images\\categories";
+        	location = location + "\\orderUp\\images\\";
 
         	File folder = new File(location);
         	if (folder.exists()) {
@@ -64,13 +64,21 @@ public class ImageService{
         	}
         	else {
         		boolean status = folder.mkdirs(); 
-        		System.out.println("status");
+        		System.out.println("made folders");
         	}
         }
         else if (os.contains("nix") || os.contains("nux") || os.contains("aix")) {
         	System.out.println("linux"); 
         	
-        	location = "/srv/www/orderUp/images/categories";
+        	location = location + "/orderUp/images/"; 
+        	File folder = new File(location);
+        	if (folder.exists()) {
+        		System.out.println("folder"); 
+        	}
+        	else {
+        		boolean status = folder.mkdirs(); 
+        		System.out.println("made folders");
+        	}
         }
         
 
@@ -85,7 +93,5 @@ public class ImageService{
             }
         }
 
-        //return the file location to be added to the db
-        return location; 
     }
 }

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="C:/orderUp/images/categories/dave.jpg">
+<img src="http://localhost:8080/images/dave.jpg">
 
 </body>
 </html>

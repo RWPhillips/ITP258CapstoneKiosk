@@ -56,9 +56,20 @@ public class CreateCategoryServlet extends HttpServlet {
 				String name = request.getParameter("category"); 
 				System.out.println(name); 
 				
-				//call the image service to add the image to the web server
-				String url = ImageService.handleImageUpload(request, response);	
+				//get the file part
+				Part filePart = request.getPart("img");
 				
+				//get the filename
+				String filename = filePart.getSubmittedFileName();
+				
+				//call the service to store the image on the server. 
+				ImageService.handleImageUpload(request, response);
+					
+				//call the image service to add the image to the web server
+				String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename; 
+				System.out.println(url);
+				
+
 		        // call the itemservice to create the category in the database. 
 				ItemService cat = new ItemService(dataSource);
 				cat.createCategory(name, url);
