@@ -155,8 +155,28 @@ public class ItemService {
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	}
-	public void DeleteCategory(String category) {
+	public void deleteCategory(String category) {
+
+		// Testing!
+		System.out.println("Account to Delete: " + category);
 		
+		 try {
+
+			    // Connect to database
+			    database = new KioskDbUtil(dataSource);
+			    connection = database.getConnection();
+
+		        // delete the category
+		        callableStatement = connection.prepareCall("{CALL deleteCategory(?)}");
+		        callableStatement.setString(1, category);
+
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        // Close JDBC objects
+		        database.closeConnection(connection, callableStatement, resultSet);
+		    }
+
 	}
 
 

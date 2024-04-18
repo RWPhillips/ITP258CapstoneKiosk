@@ -23,7 +23,7 @@
 		</div>
 		<div class="delete">
 				<h2>Delete an Item Category</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/DeleteCategoryServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="delCategory">Select a Category to delete:</label>
 				</div>
