@@ -52,7 +52,7 @@ public class CreateCategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get data from form
 		String name = request.getParameter("category");
-		System.out.println(name);
+		//System.out.println(name);
 
 		//get the file part
 		Part filePart = request.getPart("img");
@@ -65,7 +65,7 @@ public class CreateCategoryServlet extends HttpServlet {
 
 		//call the image service to add the image to the web server
 		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
-		System.out.println(url);
+		//System.out.println(url);
 
 
         // call the itemservice to create the category in the database.

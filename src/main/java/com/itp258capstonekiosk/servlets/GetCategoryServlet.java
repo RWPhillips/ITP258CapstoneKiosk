@@ -37,18 +37,17 @@ public class GetCategoryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Inside GetCat");
 
 		ItemService itemService = new ItemService(dataSource);
 		
         //Get the categories
-        ArrayList<String> strings = itemService.getCategories(); 
-
+        ArrayList<String> categories = itemService.getCategories();
+        
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
 	    
-	    // Go through each account in the array
-	    for (String string : strings) {
+	    // Go through each value in the arraylist
+	    for (String string : categories) {
 	    	
 	    	// Build the options string
 	        options.append("<option value=\"").append(string).append("\">").append(string).append("</option>");
