@@ -37,12 +37,7 @@ public class GetAccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<<<<<<< Updated upstream
 
-=======
-		
-		
->>>>>>> Stashed changes
 		// Get user name from the database
 		String username = request.getParameter("userName");
 
@@ -51,7 +46,7 @@ public class GetAccountServlet extends HttpServlet {
 
         // Get status when deleting account (this no longer works, as we are not returning anything)
         ArrayList<AccountObject> accountList = account.getAccounts(username);
-        
+
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
 
@@ -60,7 +55,6 @@ public class GetAccountServlet extends HttpServlet {
 
 	    	// Build the options string
 	        options.append("<option value=\"").append(acc.getUsername()).append("\">").append(acc.getUsername()).append("</option>");
-	        System.out.println(acc.getUsername()); 
 	    }
 
 	    // Set content type
@@ -75,7 +69,6 @@ public class GetAccountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		doGet(request, response);
 	}
 
