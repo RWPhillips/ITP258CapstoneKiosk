@@ -20,10 +20,10 @@ import com.itp258capstonekiosk.services.AccountService;
 @WebServlet("/GetAccountServlet")
 public class GetAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-	
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,23 +43,23 @@ public class GetAccountServlet extends HttpServlet {
 
 		// Get the account service
         AccountService account = new AccountService(dataSource);
-        
+
         // Get status when deleting account (this no longer works, as we are not returning anything)
         ArrayList<AccountObject> accountList = account.getAccounts(username);
 
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
-	    
+
 	    // Go through each account in the array
 	    for (AccountObject acc : accountList) {
-	    	
+
 	    	// Build the options string
 	        options.append("<option value=\"").append(acc.getUsername()).append("\">").append(acc.getUsername()).append("</option>");
 	    }
 
 	    // Set content type
 	    response.setContentType("text/html");
-	    
+
 	    // Write the options to the response
 	    response.getWriter().write(options.toString());
 	}

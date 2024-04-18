@@ -18,7 +18,7 @@ public class LoginService {
 	private PreparedStatement statement;
 	private ResultSet resultSet;
 	private KioskDbUtil database;
-	
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
 
@@ -36,7 +36,7 @@ public class LoginService {
         	System.out.println("No User Found!");
             return false;
         }
-        
+
         // Use BCrypt's checkpw method to compare the provided password with the stored hash
         System.out.println("User Found!");
         return BCrypt.checkpw(rawPassword, storedHashedPassword);
@@ -44,7 +44,7 @@ public class LoginService {
 
     // Generate a secure token
     public String generateToken(String username) {
-    	
+
     	// Create a random component
         UUID randomUUID = UUID.randomUUID();
 
@@ -77,7 +77,7 @@ public class LoginService {
                 // Retrieve the hashed password from the result set
                 storedHashedPassword = resultSet.getString("userPassword");
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle any database-related exceptions

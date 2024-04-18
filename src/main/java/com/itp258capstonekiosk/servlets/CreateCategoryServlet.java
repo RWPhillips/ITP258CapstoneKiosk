@@ -5,10 +5,12 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.services.ItemService;
@@ -17,9 +19,14 @@ import com.itp258capstonekiosk.services.ItemService;
  * Servlet implementation class CreateCategoryServlet
  */
 @WebServlet("/CreateCategoryServlet")
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+    maxFileSize = 1024 * 1024 * 10,      // 10MB
+    maxRequestSize = 1024 * 1024 * 50    // 50MB
+)
 public class CreateCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,7 +34,7 @@ public class CreateCategoryServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
 
@@ -43,19 +50,33 @@ public class CreateCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// Get data from form
-				String name = request.getParameter("addCategory");
-		        
-		        // Initialize int for account type
-				ItemService cat = new ItemService(dataSource);
-				cat.createCategory(name);
+		String name = request.getParameter("category");
+		//System.out.println(name);
 
-		        // Send to JSP page
-		 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
-		 		dispatcher.forward(request, response);
+		//get the file part
+		Part filePart = request.getPart("img");
 
-				doGet(request, response);
+		//get the filename
+		String filename = filePart.getSubmittedFileName();
+
+		//call the service to store the image on the server.
+		ImageService.handleImageUpload(request, response);
+
+		//call the image service to add the image to the web server
+		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
+		//System.out.println(url);
+
+
+        // call the itemservice to create the category in the database.
+		ItemService cat = new ItemService(dataSource);
+		cat.createCategory(name, url);
+
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		dispatcher.forward(request, response);
+
+		doGet(request, response);
 	}
 
 }

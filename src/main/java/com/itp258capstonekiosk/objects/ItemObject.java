@@ -14,7 +14,7 @@ public class ItemObject {
 
 	public ItemObject() {
 	}
-	
+
 	public ItemObject(String name, String category, String description, String picture, String categoryTags, double cost) {
 		this.name = name;
 		this.category = category;
@@ -79,7 +79,7 @@ public class ItemObject {
 	public void setCategoryTags(String categoryTags) {
 		this.categoryTags = categoryTags;
 	}
-	
-	
-	
+
+
+
 }

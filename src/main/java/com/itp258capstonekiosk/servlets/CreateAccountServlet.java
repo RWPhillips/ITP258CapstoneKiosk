@@ -52,10 +52,10 @@ public class CreateAccountServlet extends HttpServlet {
 		String password = request.getParameter("createPass");
         String confirmPassword = request.getParameter("confirmCreate");
         String accountType = request.getParameter("accType");
-        
+
         // Initialize int for account type
         int accType = 0;
-        
+
         // Pick correct account
         if (accountType.equalsIgnoreCase("Administrator"))
         	accType = 3;

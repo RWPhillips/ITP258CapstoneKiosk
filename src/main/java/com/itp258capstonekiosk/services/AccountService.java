@@ -44,16 +44,16 @@ public class AccountService {
 	        if (!resultSet.next()) {
 
 	        	if (userPassword.equals(confirmPassword)) {
-	        	
+
 		        	// Hash the password
-		            String hashedPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());     
-	
+		            String hashedPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());
+
 		            // The account doesn't exist, create it
 		            callableStatement = connection.prepareCall("{CALL createAccount(?, ?, ?)}");
 		            callableStatement.setString(1, userName);
 		            callableStatement.setString(2, hashedPassword);
 		            callableStatement.setInt(3, accountTypeID);
-	
+
 		            int rowsInserted = callableStatement.executeUpdate();
 		            if (rowsInserted > 0) {
 		                accountCreated = true;
@@ -69,10 +69,10 @@ public class AccountService {
 
 	    return accountCreated;
 	}
-	
+
 	public ArrayList<AccountObject> getAccounts(String userName) {
-	    
-        ArrayList<AccountObject> accountList = new ArrayList<AccountObject>();
+
+        ArrayList<AccountObject> accountList = new ArrayList<>();
 
 	    try {
 
@@ -81,23 +81,20 @@ public class AccountService {
 		    connection = database.getConnection();
 
 	        // Check if the account already exists
-		    callableStatement = connection.prepareCall("{CALL checkAccount(?)}");
-		    callableStatement.setString(1, userName);
+		    callableStatement = connection.prepareCall("{CALL selectUsers()}");
 	        resultSet = callableStatement.executeQuery();
-	        
-	       /* if (!resultSet.next()) {
-	        	// If no accounts
-	        	System.out.println("No Accounts Found!");
-	        }*/
-	        
+	        int count = 0;
+
 	        // Go through results
 	        while (resultSet.next())
 	        {
 	        	// Add account to list
 	        	AccountObject acc = new AccountObject(resultSet.getString(1));
 	        	accountList.add(acc);
+	        	System.out.println(acc.getUsername());
 	        }
-
+	        
+	        System.out.println(count);
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -109,15 +106,15 @@ public class AccountService {
 	    // Return accounts
 	    return accountList;
 	}
-	
+
 	public String deleteAccount(String userName, String password) {
-		
+
 		// Testing!
 		System.out.println("Account to Delete: " + userName);
-		
+
 		// Status string
 		String status = "";
-		
+
 	    try {
 
 		    // Connect to database
@@ -129,12 +126,12 @@ public class AccountService {
 		    boolean validLogin = login.validateUser(userName, password);
 
 		    if (validLogin) {
-		    	
+
 		        // Check for account
 		        callableStatement = connection.prepareCall("{CALL deleteAccount(?)}");
 		        callableStatement.setString(1, userName);
 		        int rowsAffected = callableStatement.executeUpdate();
-	
+
 		        if (rowsAffected > 0) {
 		        	// If account found
 		        	status = "Account Deleted!";
@@ -146,26 +143,26 @@ public class AccountService {
 		    else {
 		    	status = "Invalid Login or Account Doesn't Exist!";
 		    }
-		    
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
-	    
+
 	    return status;
-	    
+
 	}
-	
+
 	public String updatePassword(String userName, String userPassword, String newPassword) {
-		
+
 		// Testing!
 		System.out.println("Account to Update: " + userName);
-		
+
 		// Status string
 		String status = "";
-		
+
 	    try {
 
 		    // Connect to database
@@ -177,18 +174,18 @@ public class AccountService {
 		    boolean validLogin = login.validateUser(userName, userPassword);
 
 		    if (validLogin) {
-		    	
+
 		    	// Hash the password
-	            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt()); 
-		    	
+	            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+
 		        // Check for account
 	            callableStatement = connection.prepareCall("{CALL updatePassword(?, ?)}");
-		        
+
 		        // Update to new hashed password
 	            callableStatement.setString(1, userName);
 	            callableStatement.setString(2, hashedPassword);
 		        int rowsAffected = callableStatement.executeUpdate();
-	
+
 		        if (rowsAffected > 0) {
 		        	// If account found
 		        	status = "Password Changed!";
@@ -200,16 +197,16 @@ public class AccountService {
 		    else {
 		    	status = "Invalid Login or Account Doesn't Exist!";
 		    }
-		    
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {
 	        // Close JDBC objects
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
-	    
+
 	    return status;
-	    
+
 	}
 
 }

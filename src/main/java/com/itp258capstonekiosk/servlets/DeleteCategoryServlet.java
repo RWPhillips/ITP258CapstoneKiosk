@@ -12,25 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.itp258capstonekiosk.services.AccountService;
+import com.itp258capstonekiosk.objects.AccountObject;
+import com.itp258capstonekiosk.services.ItemService;
 
 /**
- * Servlet implementation class UpdatePasswordServlet
+ * Servlet implementation class DeleteCategoryServlet
  */
-@WebServlet("/UpdatePasswordServlet")
-public class UpdatePasswordServlet extends HttpServlet {
+@WebServlet("/DeleteCategoryServlet")
+public class DeleteCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Resource(name = "jdbc/kioskdatabase")
+	private DataSource dataSource;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdatePasswordServlet() {
+    public DeleteCategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-    @Resource(name = "jdbc/kioskdatabase")
-	private DataSource dataSource;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,23 +46,25 @@ public class UpdatePasswordServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("updateUser");
-        String password = request.getParameter("updatePass");
-        String newPassword = request.getParameter("confirmUpdate");
+		
+		String category = request.getParameter("delCategory");
+		
+		System.out.println("subcat to delete " + category); 
+		
+        ItemService item = new ItemService(dataSource);
 
-        AccountService account = new AccountService(dataSource);
+        //call the file to delete the category
+        item.deleteCategory(category);
 
-        // Get status when deleting account
-        String status = account.updatePassword(username, password, newPassword);
-        System.out.println(status);
-
-        // Store session w/ status
+        /* Store session w/ status
         HttpSession session = request.getSession(true);
-        session.setAttribute("updateStatus", status);
+        session.setAttribute("deleteStatus", status);*/
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
  		dispatcher.forward(request, response);
+	
+		doGet(request, response);
 	}
 
 }

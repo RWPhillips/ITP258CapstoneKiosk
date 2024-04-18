@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private LoginService login;
     private DataSource dataSource;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
     public LoginServlet(DataSource theDataSource) {
     	this.dataSource = theDataSource;
     }
@@ -58,9 +58,9 @@ public class LoginServlet extends HttpServlet {
 	    if (validLogin) {
 	        // Create a session for the user
 	        HttpSession session = request.getSession(true);
-	        
+
 	        // Store user information in the session
-	        session.setAttribute("username", username); 
+	        session.setAttribute("username", username);
 	        session.setAttribute("Role", "user");
 	        session.setAttribute("authenticated", true);
 
@@ -76,13 +76,13 @@ public class LoginServlet extends HttpServlet {
 
 	        // Redirect the user to the main page
 	        System.out.println("Your login is valid!");
-	        
+
 	        // Send to JSP page
 	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/account.jsp");
 	 		dispatcher.forward(request, response);
-	        
+
 	    } else {
-	    	
+
 	    	// Login error
 	    	System.out.println("Your login is NOT valid!");
 	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp?error=1");
