@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @WebServlet("/CreateItemServlet")
 public class CreateItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -24,7 +24,7 @@ public class CreateItemServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
 

@@ -11,7 +11,7 @@ public class AccountObject implements Serializable{
 	public AccountObject(String username) {
 		this.username = username;
 	}
-	
+
 	public AccountObject(String username, String password) {
 		this.username = username;
 		this.password = password;

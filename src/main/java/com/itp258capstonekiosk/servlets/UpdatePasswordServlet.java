@@ -20,7 +20,7 @@ import com.itp258capstonekiosk.services.AccountService;
 @WebServlet("/UpdatePasswordServlet")
 public class UpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,7 +28,7 @@ public class UpdatePasswordServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
     @Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
 
@@ -50,14 +50,14 @@ public class UpdatePasswordServlet extends HttpServlet {
         String newPassword = request.getParameter("confirmUpdate");
 
         AccountService account = new AccountService(dataSource);
-        
+
         // Get status when deleting account
         String status = account.updatePassword(username, password, newPassword);
         System.out.println(status);
-        
+
         // Store session w/ status
         HttpSession session = request.getSession(true);
-        session.setAttribute("updateStatus", status); 
+        session.setAttribute("updateStatus", status);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");

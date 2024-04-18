@@ -8,7 +8,7 @@ public class SubItemObject {
 
 	public SubItemObject() {
 	}
-	
+
 	public SubItemObject(String name, double cost, int category) {
 		this.name = name;
 		this.cost = cost;
@@ -38,6 +38,6 @@ public class SubItemObject {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	
-	
+
+
 }

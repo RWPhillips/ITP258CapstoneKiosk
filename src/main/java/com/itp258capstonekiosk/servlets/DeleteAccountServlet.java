@@ -20,10 +20,10 @@ import com.itp258capstonekiosk.services.AccountService;
 @WebServlet("/DeleteAccountServlet")
 public class DeleteAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-	
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,19 +45,19 @@ public class DeleteAccountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String username = request.getParameter("delUser");
         String password = request.getParameter("deletePass");
 
         AccountService account = new AccountService(dataSource);
-        
+
         // Get status when deleting account
         String status = account.deleteAccount(username, password);
         System.out.println(status);
-        
+
         // Store session w/ status
         HttpSession session = request.getSession(true);
-        session.setAttribute("deleteStatus", status); 
+        session.setAttribute("deleteStatus", status);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
