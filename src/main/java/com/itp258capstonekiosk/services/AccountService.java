@@ -75,7 +75,7 @@ public class AccountService {
         ArrayList<AccountObject> accountList = new ArrayList<>();
 
 	    try {
-	    	
+
 		    // Connect to database
 		    database = new KioskDbUtil(dataSource);
 		    connection = database.getConnection();
@@ -83,7 +83,6 @@ public class AccountService {
 	        // Check if the account already exists
 		    callableStatement = connection.prepareCall("{CALL selectUsers()}");
 	        resultSet = callableStatement.executeQuery();
-
 	        int count = 0;
 
 	        // Go through results
@@ -92,11 +91,7 @@ public class AccountService {
 	        	// Add account to list
 	        	AccountObject acc = new AccountObject(resultSet.getString(1));
 	        	accountList.add(acc);
-
 	        	System.out.println(acc.getUsername());
-
-	        	System.out.println("acct");
-
 	        }
 	        
 	        System.out.println(count);
