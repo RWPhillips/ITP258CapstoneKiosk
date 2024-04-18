@@ -85,10 +85,11 @@ public class AccountService {
 	        resultSet = callableStatement.executeQuery();
 	        int count = 0;
 
+	        /*
 			if (!resultSet.next()) {
 		    	// If no accounts
 		    	System.out.println("No Accounts Found!");
-			}
+			}*/
 
 
 	        // Go through results
