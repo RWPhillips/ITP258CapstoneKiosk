@@ -51,32 +51,32 @@ public class CreateCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get data from form
-				String name = request.getParameter("category");
-				System.out.println(name);
+		String name = request.getParameter("category");
+		System.out.println(name);
 
-				//get the file part
-				Part filePart = request.getPart("img");
+		//get the file part
+		Part filePart = request.getPart("img");
 
-				//get the filename
-				String filename = filePart.getSubmittedFileName();
+		//get the filename
+		String filename = filePart.getSubmittedFileName();
 
-				//call the service to store the image on the server.
-				ImageService.handleImageUpload(request, response);
+		//call the service to store the image on the server.
+		ImageService.handleImageUpload(request, response);
 
-				//call the image service to add the image to the web server
-				String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
-				System.out.println(url);
+		//call the image service to add the image to the web server
+		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
+		System.out.println(url);
 
 
-		        // call the itemservice to create the category in the database.
-				ItemService cat = new ItemService(dataSource);
-				cat.createCategory(name, url);
+        // call the itemservice to create the category in the database.
+		ItemService cat = new ItemService(dataSource);
+		cat.createCategory(name, url);
 
-		        // Send to JSP page
-		 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
-		 		dispatcher.forward(request, response);
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		dispatcher.forward(request, response);
 
-				doGet(request, response);
+		doGet(request, response);
 	}
 
 }
