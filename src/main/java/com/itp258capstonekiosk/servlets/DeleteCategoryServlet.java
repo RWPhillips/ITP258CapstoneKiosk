@@ -2,8 +2,6 @@ package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,20 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.AccountObject;
-import com.itp258capstonekiosk.services.AccountService;
 import com.itp258capstonekiosk.services.ItemService;
 
-@WebServlet("/GetCategoryServlet")
-public class GetCategoryServlet extends HttpServlet {
+/**
+ * Servlet implementation class DeleteCategoryServlet
+ */
+@WebServlet("/DeleteCategoryServlet")
+public class DeleteCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCategoryServlet() {
+    public DeleteCategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,29 +36,7 @@ public class GetCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("Inside GetCat");
-
-		ItemService itemService = new ItemService(dataSource);
-		
-        //Get the categories
-        ArrayList<String> strings = itemService.getCategories(); 
-
-	    // Get ready to generate options with StringBuilder
-	    StringBuilder options = new StringBuilder();
-	    
-	    // Go through each account in the array
-	    for (String string : strings) {
-	    	
-	    	// Build the options string
-	        options.append("<option value=\"").append(string).append("\">").append(string).append("</option>");
-	    }
-
-	    // Set content type
-	    response.setContentType("text/html");
-	    
-	    // Write the options to the response
-	    response.getWriter().write(options.toString());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -66,6 +44,24 @@ public class GetCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String username = request.getParameter("delUser");
+        String password = request.getParameter("deletePass");
+
+        ItemService item = new ItemService(dataSource);
+
+        // Get status when deleting account
+        String status = item.deleteCategory(username, password);
+        System.out.println(status);
+
+        // Store session w/ status
+        HttpSession session = request.getSession(true);
+        session.setAttribute("deleteStatus", status);
+
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
+ 		dispatcher.forward(request, response);
+	}
 		doGet(request, response);
 	}
 

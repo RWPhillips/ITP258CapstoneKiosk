@@ -28,7 +28,7 @@
 					<label for="delCategory">Select a Category to delete:</label>
 				</div>
 				<div class="padform">
-					<select name="delCategory" class="">
+					<select name="delCategory" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet">
 					</select>
 				</div>
 				<p class="reminder">Category must be empty to be deleted.

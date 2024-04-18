@@ -86,17 +86,9 @@ public class AccountService {
 
 	        int count = 0;
 
-
-	        if (!resultSet.next()) {
-	        	// If no accounts
-	        	System.out.println("No Accounts Found!");
-	        }
-	        
-
 	        // Go through results
 	        while (resultSet.next())
 	        {
-	        	count++;
 	        	// Add account to list
 	        	AccountObject acc = new AccountObject(resultSet.getString(1));
 	        	accountList.add(acc);

@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
@@ -125,6 +126,38 @@ public class ItemService {
 	    }
 	}
 
+	public ArrayList<String> getCategories() {
+		ArrayList<String> strings = new ArrayList<>(); 
+	    try {
+
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+
+            // The account doesn't exist, create it
+            CallableStatement callableStatement = connection.prepareCall("{CALL getCategory()}");
+	        resultSet = callableStatement.executeQuery();
+
+	        //iterate over the result set adding each string to the array
+	        while (resultSet.next()) {
+	        	String cat = resultSet.getString(1); 
+	        	strings.add(cat); 
+	        	System.out.println(cat);
+	        }
+	        
+	        return strings; 
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return strings; 
+	    } finally {
+	        // Close JDBC objects
+	        database.closeConnection(connection, callableStatement, resultSet);
+	    }
+	}
+	public void DeleteCategory(String category) {
+		
+	}
 
 
 }
