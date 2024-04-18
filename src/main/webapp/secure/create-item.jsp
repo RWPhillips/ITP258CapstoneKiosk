@@ -8,7 +8,7 @@
 					<label for="createItem">Select an item category:</label>
 				</div>
 				<div class="padform">
-					<select name="createItem" class="delItem">
+					<select name="createItem" class="">
 					</select>
 				</div>
 				<div class="padform">
@@ -21,7 +21,7 @@
 					<label for="itemCost">Enter the item's cost:</label>
 				</div>
 				<div class="padform">
-					<input type="text" class="" name="itemCost" maxlength="100">
+					<input type="number" class="" name="itemCost" maxlength="100">
 				</div>
 				<div class="padform">
 					<label for="itemImage">Upload an Image for the Item:</label>

@@ -169,6 +169,7 @@ public class ItemService {
 		        // delete the category
 		        callableStatement = connection.prepareCall("{CALL deleteCategory(?)}");
 		        callableStatement.setString(1, category);
+		        callableStatement.execute(); 
 
 		    } catch (SQLException e) {
 		        e.printStackTrace();
