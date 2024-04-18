@@ -37,12 +37,7 @@ public class GetAccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<<<<<<< Updated upstream
-
-=======
 		
-		
->>>>>>> Stashed changes
 		// Get user name from the database
 		String username = request.getParameter("userName");
 
