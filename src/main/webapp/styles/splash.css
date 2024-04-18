@@ -58,7 +58,3 @@ body, html {
     border-radius: 5px;
     text-transform:uppercase;  
 }
-
-.continue-button:hover {
-    background-color: #6CB4EE;
-}
