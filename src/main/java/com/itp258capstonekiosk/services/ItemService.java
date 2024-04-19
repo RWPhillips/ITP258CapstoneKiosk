@@ -288,12 +288,12 @@ public class ItemService {
             
             // Process the result set
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String category = resultSet.getString("category");
-                String description = resultSet.getString("description");
-                String picture = resultSet.getString("imageURL");
-                String categoryTags = resultSet.getString("category_tags");
-                double cost = resultSet.getDouble("cost");
+                String name = resultSet.getString(1);
+                String category = resultSet.getString(2);
+                String description = resultSet.getString(3);
+                String picture = resultSet.getString(4);
+                String categoryTags = resultSet.getString(5);
+                double cost = resultSet.getDouble(6);
                 
                 // Create ItemObject instance
                 ItemObject item = new ItemObject(name, category, description, picture, categoryTags, cost);
