@@ -47,8 +47,8 @@ public class DisplayCategoriesServlet extends HttpServlet {
 		
 		for (CategoryObject category: categories) {
 			System.out.println("url: " + category.getImageURL() + " name " + category.getName()); 
-			html = html + "<a href src=\"\" class=\"category\" name=\"" + category.getName() + "\" hx-trigger=\"click\" hx-get=\"${pageContext.request.contextPath}/secure/DisplayItemsServlet\">"+
-			"<div class=\"img\"><img src=\"" + category.getImageURL() + "\"></div><p class=\"name\">" + category.getName() + "</p>"; 
+			html = html + "<a href src=\"\" class=\"img\" name=\"" + category.getName() + "\" hx-trigger=\"click\" hx-get=\"${pageContext.request.contextPath}/secure/DisplayItemsServlet\">"+
+			"<div class=\"catContainer\"><img src=\"" + category.getImageURL() + "\" class=\"catImg\"\"><p class=\"catText\">" + category.getName() + "</p></div></a>"; 
 			System.out.println(html); 
 		}
 		

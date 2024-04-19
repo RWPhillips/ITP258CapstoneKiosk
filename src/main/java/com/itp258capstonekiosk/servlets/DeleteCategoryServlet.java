@@ -59,6 +59,9 @@ public class DeleteCategoryServlet extends HttpServlet {
         /* Store session w/ status
         HttpSession session = request.getSession(true);
         session.setAttribute("deleteStatus", status);*/
+        
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		dispatcher.forward(request, response);
 
 	
 		doGet(request, response);

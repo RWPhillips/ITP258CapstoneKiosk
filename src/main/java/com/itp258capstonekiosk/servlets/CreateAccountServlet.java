@@ -69,7 +69,7 @@ public class CreateAccountServlet extends HttpServlet {
         account.createAccount(username, password, confirmPassword, accType);
 
         // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/index.jsp");
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/public/account.jsp");
  		dispatcher.forward(request, response);
 
 		doGet(request, response);

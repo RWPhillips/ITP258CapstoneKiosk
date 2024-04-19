@@ -8,7 +8,7 @@
 					<label for="category">Enter a category name: </label>
 				</div>
 				<div class="padform">
-					<input type="text" class="" name="category" maxlength="100">
+					<input type="text" class="" name="category" maxlength="20">
 				</div>
 				<div class="padform">
 					<label for="itemImage">Upload an Image for the Category:</label>

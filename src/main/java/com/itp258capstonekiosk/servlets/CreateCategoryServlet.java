@@ -71,6 +71,10 @@ public class CreateCategoryServlet extends HttpServlet {
 		ItemService cat = new ItemService(dataSource);
 		cat.createCategory(name, url);
 
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		dispatcher.forward(request, response);
+
 
 		doGet(request, response);
 	}

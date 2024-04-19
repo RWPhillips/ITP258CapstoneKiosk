@@ -3,5 +3,41 @@
 	background: white; 
 	margin-left: .5vw; 
 	border-right: 1px solid #EA563C; 
+	padding-top: 2vh; 
+	box-sizing: border-box; 
+	overflow-y: scroll;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+	
+}
+
+.catContainer {
+	display: grid;
+	grid-template-columns: auto; 
+	justify-items: center; 
+	margin-bottom: 4vh; 
+}
+
+a:link {
+	text-decoration: none; 
+	color: #BEBEBE;
+}
+
+a:visited {
+	color: #BEBEBE;  
+}
+
+.catImg {
+	height: 18vh;
+	width: 18vh; 
 
 }
+.catText {
+	margin: 0;
+	text-transform: uppercase;
+	font-weight: 500; 
+	font-family: "Segoe UI Black", Arial, sans-serif;
+	font-size: 2vh; 
+}
+
+
