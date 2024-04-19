@@ -211,7 +211,7 @@ public class ItemService {
 		    connection = database.getConnection();
 
             // The account doesn't exist, create it
-            CallableStatement callableStatement = connection.prepareCall("{CALL getSubCategory()}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL getSubCategories()}");
 	        resultSet = callableStatement.executeQuery();
 
 	        //iterate over the result set adding each string to the array
@@ -244,19 +244,19 @@ public class ItemService {
             //PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM categories");
             // Leaving it in case we need it ?
             
-            CallableStatement callableStatement = connection.prepareCall("{CALL getFullCategory()}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL getCategoryNameImage()}");
             
             // Execute the query
             resultSet = callableStatement.executeQuery();
             
             // Process the result set
             while (resultSet.next()) {
-                int categoryId = resultSet.getInt("category_id");
-                String imageURL = resultSet.getString("image_url");
-                String name = resultSet.getString("name");
+            	String name = resultSet.getString(1);
+                String imageURL = resultSet.getString(2);
+                
                 
                 // Create CategoryObject instance
-                CategoryObject category = new CategoryObject(categoryId, imageURL, name);
+                CategoryObject category = new CategoryObject(imageURL, name);
                 
                 // Add category to the ArrayList
                 categories.add(category);

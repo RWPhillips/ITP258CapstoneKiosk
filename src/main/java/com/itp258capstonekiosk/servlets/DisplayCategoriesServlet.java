@@ -1,34 +1,34 @@
 package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.itp258capstonekiosk.objects.AccountObject;
+import com.itp258capstonekiosk.objects.CategoryObject;
 import com.itp258capstonekiosk.services.ItemService;
 
 /**
- * Servlet implementation class DeleteCategoryServlet
+ * Servlet implementation class DisplayCategoriesServlet
  */
-@WebServlet("/DeleteCategoryServlet")
-public class DeleteCategoryServlet extends HttpServlet {
+@WebServlet("/DisplayCategoriesServlet")
+public class DisplayCategoriesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCategoryServlet() {
+    public DisplayCategoriesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,26 @@ public class DeleteCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//create an item service
+		ItemService item = new ItemService(dataSource); 
+		
+		//get the arraylist of categories
+		ArrayList<CategoryObject> categories = item.getFullCategory();
+		
+		String html = ""; 
+		
+		for (CategoryObject category: categories) {
+			System.out.println("url: " + category.getImageURL() + " name " + category.getName()); 
+			html = html + "<a href src=\"\" class=\"category\" name=\"" + category.getName() + "\" hx-trigger=\"click\" hx-get=\"${pageContext.request.contextPath}/secure/DisplayItemsServlet\">"+
+			"<div class=\"img\"><img src=\"" + category.getImageURL() + "\"></div><p class=\"name\">" + category.getName() + "</p>"; 
+			System.out.println(html); 
+		}
+		
+	    // Set content type
+	    response.setContentType("text/html");
 
+	    // Write the options to the response
+	    response.getWriter().write(html.toString());
 	}
 
 	/**
@@ -46,21 +64,6 @@ public class DeleteCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String category = request.getParameter("delCategory");
-		
-		System.out.println("subcat to delete " + category); 
-		
-        ItemService item = new ItemService(dataSource);
-
-        //call the file to delete the category
-        item.deleteCategory(category);
-
-        /* Store session w/ status
-        HttpSession session = request.getSession(true);
-        session.setAttribute("deleteStatus", status);*/
-
-	
 		doGet(request, response);
 	}
 

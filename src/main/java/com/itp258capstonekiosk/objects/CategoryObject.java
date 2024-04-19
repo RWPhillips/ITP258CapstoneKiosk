@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CategoryObject {
 	
-	private int categoryId;
 	private String imageURL;
 	private String name;
 	private ArrayList<CategoryObject> category;
@@ -12,18 +11,10 @@ public class CategoryObject {
 	public CategoryObject() {
 	}
 	
-	public CategoryObject(int categoryId, String imageURL, String name) {
-		this.categoryId = categoryId;
+	public CategoryObject(String imageURL, String name) {
+
 		this.imageURL = imageURL;
 		this.name = name;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public String getImageURL() {
