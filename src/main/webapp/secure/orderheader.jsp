@@ -14,11 +14,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/htmx.org@1.9.3"></script>
 
-<title>Select a Category</title>
+<title></title>
 </head>
 <body>
 <div class="container">
 	<div class="head">
 		<img class="header" src="${pageContext.request.contextPath}/images/sizzle-main.png" >
-		<p class="label">Burgers & Subs</p>
+		<p class="label">Place your order</p>
 	</div>
