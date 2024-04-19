@@ -1,5 +1,6 @@
 package com.itp258capstonekiosk.services;
 
+import java.sql.Array;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -269,6 +270,45 @@ public class ItemService {
         }
         
         return categories;
+    }
+	
+	public ArrayList<ItemObject> getItemList() {
+        ArrayList<ItemObject> items = new ArrayList<>();
+        
+        try {
+            // Connect to the database
+            database = new KioskDbUtil(dataSource);
+            connection = database.getConnection();
+            
+            // Prepare the SQL statement to get all items
+            CallableStatement callableStatement = connection.prepareCall("{CALL getItemList()}");
+            
+            // Execute the query
+            resultSet = callableStatement.executeQuery();
+            
+            // Process the result set
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String category = resultSet.getString("category");
+                String description = resultSet.getString("description");
+                String picture = resultSet.getString("imageURL");
+                String categoryTags = resultSet.getString("category_tags");
+                double cost = resultSet.getDouble("cost");
+                
+                // Create ItemObject instance
+                ItemObject item = new ItemObject(name, category, description, picture, categoryTags, cost);
+                
+                // Add item to the ArrayList
+                items.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close JDBC objects
+            database.closeConnection(connection, callableStatement, resultSet);
+        }
+        
+        return items;
     }
 	
 }
