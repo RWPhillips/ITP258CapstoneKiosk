@@ -43,7 +43,6 @@ public class CreateCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -64,17 +63,14 @@ public class CreateCategoryServlet extends HttpServlet {
 		ImageService.handleImageUpload(request, response);
 
 		//call the image service to add the image to the web server
-		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
-		//System.out.println(url);
+		String url = "/images/" + filename;
+		System.out.println(request.getHeader("Host"));
 
 
         // call the itemservice to create the category in the database.
 		ItemService cat = new ItemService(dataSource);
 		cat.createCategory(name, url);
 
-        // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
- 		dispatcher.forward(request, response);
 
 		doGet(request, response);
 	}
