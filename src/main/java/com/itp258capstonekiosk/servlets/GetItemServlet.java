@@ -42,6 +42,9 @@ public class GetItemServlet extends HttpServlet {
 		ItemService item = new ItemService(dataSource);
 		
 		String cat = request.getParameter("selectCat");
+		if (cat == null) {
+			
+		}
 		
         // Get items from certain category only
         ArrayList<ItemObject> itemList = item.getItemFromCategory(cat);
