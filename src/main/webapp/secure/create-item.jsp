@@ -3,13 +3,15 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create an Item</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select an item category:</label>
 				</div>
 				<div class="padform">
-					<select name="createItem" class="">
-					</select>
+					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
+						<!-- When hx-get does its thing, the options are automatically returned as the request from the Servlet -->
+						<!-- I really recommend looking at how it's done in the GetAccountServlet, very cool stuff. -->
+					</select><br>
 				</div>
 				<div class="padform">
 					<label for="itemName">Enter an item name:</label>
@@ -42,7 +44,7 @@
 		</div>
 		<div class="delete">
 				<h2>Delete an Item</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="selectCat">Select an item Category</label>
 				</div>

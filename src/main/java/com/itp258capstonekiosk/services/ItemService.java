@@ -26,7 +26,7 @@ public class ItemService {
 		dataSource = theDataSource;
 	}
 
-	public ItemObject createItem(int categoryID, String name, double cost, int imageID, String description, String categoryTags) {
+	public void createItem(int categoryID, String name, double cost, String imageUrl, String description) {
 
 	    ItemObject item = new ItemObject();
 
@@ -37,16 +37,15 @@ public class ItemService {
 		    connection = database.getConnection();
 
             // The account doesn't exist, create it
-            CallableStatement callableStatement = connection.prepareCall("{CALL createNewItem(?, ?, ?, ?, ?, ?)}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL createNewItem(?, ?, ?, ?, ?)}");
             callableStatement.setInt(1, categoryID);
             callableStatement.setString(2, name);
             callableStatement.setDouble(3, cost);
-            callableStatement.setInt(4, imageID);
+            callableStatement.setString(4, imageUrl);
             callableStatement.setString(5, description);
-            callableStatement.setString(6, categoryTags);
 
             // Create item
-            item = new ItemObject(resultSet.getString(1), resultSet.getString(2), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getDouble(3));
+            item = new ItemObject(resultSet.getInt(1), resultSet.getString(2), resultSet.getDouble(3), resultSet.getString(4), resultSet.getString(5));
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -54,8 +53,6 @@ public class ItemService {
 	        // Close JDBC objects
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
-
-	    return item;
 	}
 
 	public SubItemObject createSubItem(String name, double cost, int categoryID) {
@@ -159,6 +156,38 @@ public class ItemService {
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
 	}
+	
+	public int getSpecificCategory(String name) {
+		ArrayList<String> strings = new ArrayList<>(); 
+	    try {
+
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+
+            // The account doesn't exist, create it
+            CallableStatement callableStatement = connection.prepareCall("{CALL getSpecificCategory(?)}");
+            callableStatement.setString(1, name);
+	        resultSet = callableStatement.executeQuery();
+
+	        int cat = 0;
+	        
+	        //iterate over the result set adding each string to the array
+	        if (resultSet.next()) {
+	        	cat = resultSet.getInt(2); 
+	        }
+	        
+	        return cat; 
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 0;
+	    } finally {
+	        // Close JDBC objects
+	        database.closeConnection(connection, callableStatement, resultSet);
+	    }
+	}
+	
 	public void deleteCategory(String category) {
 
 		// Testing!
@@ -288,15 +317,15 @@ public class ItemService {
             
             // Process the result set
             while (resultSet.next()) {
-                String name = resultSet.getString(1);
-                String category = resultSet.getString(2);
-                String description = resultSet.getString(3);
-                String picture = resultSet.getString(4);
-                String categoryTags = resultSet.getString(5);
-                double cost = resultSet.getDouble(6);
+            	int category = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                double cost = resultSet.getDouble(3);
+                String description = resultSet.getString(4);
+                String picture = resultSet.getString(5);
+                
                 
                 // Create ItemObject instance
-                ItemObject item = new ItemObject(name, category, description, picture, categoryTags, cost);
+                ItemObject item = new ItemObject(category, name, cost, picture, description);
                 
                 // Add item to the ArrayList
                 items.add(item);

@@ -5,22 +5,20 @@ import java.util.ArrayList;
 public class ItemObject {
 
 	private String name;
-	private String category;
+	private int category;
 	private String description;
 	private String picture;
-	private String categoryTags;
 	private double cost;
 	private ArrayList<SubItemObject> subItems;
 
 	public ItemObject() {
 	}
 
-	public ItemObject(String name, String category, String description, String picture, String categoryTags, double cost) {
+	public ItemObject(int category, String name, double cost, String picture, String description) {
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.picture = picture;
-		this.categoryTags = categoryTags;
 		this.cost = cost;
 	}
 
@@ -30,14 +28,6 @@ public class ItemObject {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public String getDescription() {
@@ -72,12 +62,12 @@ public class ItemObject {
 		this.subItems = subItems;
 	}
 
-	public String getCategoryTags() {
-		return categoryTags;
+	public int getCategory() {
+		return category;
 	}
 
-	public void setCategoryTags(String categoryTags) {
-		this.categoryTags = categoryTags;
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 
