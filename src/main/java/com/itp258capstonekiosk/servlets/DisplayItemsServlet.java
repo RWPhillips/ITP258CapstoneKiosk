@@ -33,8 +33,8 @@ public class DisplayItemsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		
-		String trigger = request.getHeader("hx-trigger-name");
-		System.out.println(trigger); 
+		String category = request.getHeader("hx-trigger-name");
+		System.out.println(category); 
 		
 
 
