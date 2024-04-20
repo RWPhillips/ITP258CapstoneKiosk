@@ -46,15 +46,15 @@
 				<div class="padform">
 					<label for="selectCat">Select an item Category</label>
 				</div>
-				<div class="padform">
-					<select name="selectCat" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
+				<div class="padform" hx-trigger="load" hx-target=".selectCat" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
+					<select name="selectCat" class="selectCat"  hx-trigger="change" hx-get="${pageContext.request.contextPath}/GetItemServlet" hx-target=".delItem">
 					</select><br>
 				</div>
 				<div class="padform">
 					<label for="delItem">Select an item to delete</label>
 				</div>
 				<div class="padform">
-					<select name="delItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetItemServlet" >
+					<select name="delItem" class="delItem" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetItemServlet" >
 					</select>
 				</div>
 				

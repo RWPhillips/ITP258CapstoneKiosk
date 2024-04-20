@@ -37,6 +37,8 @@ public class GetCategoryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		System.out.println("inside getCat");
+		
 
 		ItemService itemService = new ItemService(dataSource);
 		
