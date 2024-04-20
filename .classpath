@@ -29,5 +29,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/apache-tomcat-9.0.82/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/apache-tomcat-9.0.82/lib/tomcat-util.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/gson">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

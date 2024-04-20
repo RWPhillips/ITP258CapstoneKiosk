@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import com.itp258capstonekiosk.objects.CategoryObject;
 import com.itp258capstonekiosk.services.ItemService;
 
+
 /**
  * Servlet implementation class DisplayCategoriesServlet
  */
@@ -46,10 +47,10 @@ public class DisplayCategoriesServlet extends HttpServlet {
 		String html = ""; 
 		
 		for (CategoryObject category: categories) {
-			System.out.println("url: " + category.getImageURL() + " name " + category.getName()); 
-			html = html + "<a href src=\"\" class=\"img\" name=\"" + category.getName() + "\" hx-trigger=\"click\" hx-get=\"${pageContext.request.contextPath}/DisplayItemsServlet\""+
-			" hx-vals=\"{'category: '" + category.getName() + "'\"><div class=\"catContainer\"><img src=\"" + category.getImageURL() + "\" class=\"catImg\"\"><p class=\"catText\">" + category.getName() + "</p></div></a>"; 
-			System.out.println(html); 
+			html = html + "<button class=\"catContainer\" name=\"" + category.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/DisplayItemsServlet\" hx-target=\".content\" >" +
+			"<img src=\"" + category.getImageURL() + "\" class=\"catImg\"><p class=\"catText\">" + category.getName() + "</p></button>"; 
+			
+						System.out.println(html); 
 		}
 		
 	    // Set content type

@@ -16,15 +16,11 @@
 	grid-template-columns: auto; 
 	justify-items: center; 
 	margin-bottom: 4vh; 
-}
-
-a:link {
-	text-decoration: none; 
-	color: black;
-}
-
-a:visited {
-	color: black;  
+	background-color: white; 
+	border: none; 
+	padding: 0; 
+	margin-right: 0; 
+	width: 100%; 
 }
 
 .catImg {
