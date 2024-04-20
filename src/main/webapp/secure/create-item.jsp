@@ -54,7 +54,7 @@
 					<label for="delItem">Select an item to delete</label>
 				</div>
 				<div class="padform">
-					<select name="delItem" class="">
+					<select name="delItem" class="" hx-trigger="change" hx-get="${pageContext.request.contextPath}/GetItemServlet" >
 					</select>
 				</div>
 				
