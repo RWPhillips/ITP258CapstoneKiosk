@@ -9,8 +9,6 @@
 				</div>
 				<div class="padform">
 					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
-						<!-- When hx-get does its thing, the options are automatically returned as the request from the Servlet -->
-						<!-- I really recommend looking at how it's done in the GetAccountServlet, very cool stuff. -->
 					</select><br>
 				</div>
 				<div class="padform">

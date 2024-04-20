@@ -36,7 +36,7 @@ public class ItemService {
 		    database = new KioskDbUtil(dataSource);
 		    connection = database.getConnection();
 		    
-		    System.out.println(categoryID + " - " + name + " - " + cost + " - " + imageUrl + " - " + description);
+		    //System.out.println(categoryID + " - " + name + " - " + cost + " - " + imageUrl + " - " + description);
 
             // The account doesn't exist, create it
             CallableStatement callableStatement = connection.prepareCall("{CALL createNewItem(?, ?, ?, ?, ?)}");
@@ -58,9 +58,9 @@ public class ItemService {
 	    }
 	}
 
-	public SubItemObject createSubItem(String name, double cost, int categoryID) {
+	public void createSubItem(String name, double cost, int categoryID, String desc) {
 
-	    SubItemObject subItem = new SubItemObject();
+	    //SubItemObject subItem = new SubItemObject();
 
 	    try {
 
@@ -69,14 +69,15 @@ public class ItemService {
 		    connection = database.getConnection();
 
             // The account doesn't exist, create it
-            CallableStatement callableStatement = connection.prepareCall("{CALL createNewSubItem(?, ?, ?)}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL createNewSubItem(?, ?, ?, ?)}");
             callableStatement.setString(1, name);
             callableStatement.setDouble(2, cost);
             callableStatement.setInt(3, categoryID);
+            callableStatement.setString(4, desc);
             callableStatement.execute();
 
             // Create item
-            subItem = new SubItemObject(resultSet.getString(1), resultSet.getDouble(2), resultSet.getInt(3));
+            //subItem = new SubItemObject(resultSet.getString(1), resultSet.getDouble(2), resultSet.getInt(3));
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -84,8 +85,6 @@ public class ItemService {
 	        // Close JDBC objects
 	        database.closeConnection(connection, callableStatement, resultSet);
 	    }
-
-	    return subItem;
 	}
 
 	public void createCategory(String name, String url) {
@@ -192,6 +191,37 @@ public class ItemService {
 	    }
 	}
 	
+	public int getSpecificSubCategory(String name) {
+		ArrayList<String> strings = new ArrayList<>(); 
+	    try {
+
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+
+            // The account doesn't exist, create it
+            CallableStatement callableStatement = connection.prepareCall("{CALL getSpecificSubCategory(?)}");
+            callableStatement.setString(1, name);
+	        resultSet = callableStatement.executeQuery();
+
+	        int cat = 0;
+	        
+	        //iterate over the result set adding each string to the array
+	        if (resultSet.next()) {
+	        	cat = resultSet.getInt(2); 
+	        }
+	        
+	        return cat; 
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return 0;
+	    } finally {
+	        // Close JDBC objects
+	        database.closeConnection(connection, callableStatement, resultSet);
+	    }
+	}
+	
 	public void deleteCategory(String category) {
 
 		// Testing!
@@ -250,7 +280,7 @@ public class ItemService {
 
 	        //iterate over the result set adding each string to the array
 	        while (resultSet.next()) {
-	        	String cat = resultSet.getString(1); 
+	        	String cat = resultSet.getString(2); 
 	        	strings.add(cat); 
 	        	//System.out.println(cat);
 	        }
