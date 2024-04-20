@@ -16,8 +16,8 @@ import com.itp258capstonekiosk.services.ItemService;
 /**
  * Servlet implementation class GetSubcategoryServlet
  */
-@WebServlet("/GetSubcategoryServlet")
-public class GetSubcategoryServlet extends HttpServlet {
+@WebServlet("/GetSubCategoryServlet")
+public class GetSubCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Resource(name = "jdbc/kioskdatabase")
@@ -26,7 +26,7 @@ public class GetSubcategoryServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetSubcategoryServlet() {
+    public GetSubCategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

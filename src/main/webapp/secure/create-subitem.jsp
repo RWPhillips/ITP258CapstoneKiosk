@@ -8,7 +8,7 @@
 					<label for="createItem">Select an subitem category:</label>
 				</div>
 				<div class="padform">
-					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubcategoryServlet" >
+					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubCategoryServlet" >
 					</select><br>
 				</div>
 				<div class="padform">
@@ -37,12 +37,12 @@
 		</div>
 		<div class="delete">
 				<h2>Delete an Item</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateSubItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select a Subitem Category</label>
 				</div>
 				<div class="padform" hx-trigger="load" hx-target=".selectCat" hx-get="${pageContext.request.contextPath}/GetSubCategoryServlet">
-					<select name="createItem" class="selectCat" hx-trigger="change" hx-get="${pageContext.request.contextPath}/GetSubItemServlet" hx-target=".delItem" >
+					<select name="selectCat" class="selectCat" hx-trigger="change" hx-get="${pageContext.request.contextPath}/GetSubItemServlet" hx-target=".delItem" >
 					</select><br>
 				</div>
 				<div class="padform">
