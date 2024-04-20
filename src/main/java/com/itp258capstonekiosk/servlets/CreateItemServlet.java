@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
+import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.services.ItemService;
 
 /**
  * Servlet implementation class CreateItemServlet
  */
 @WebServlet("/CreateItemServlet")
+@MultipartConfig(
+	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+	    maxFileSize = 1024 * 1024 * 10,      // 10MB
+	    maxRequestSize = 1024 * 1024 * 50    // 50MB
+	)
 public class CreateItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,11 +52,16 @@ public class CreateItemServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ItemService itemCat = new ItemService(dataSource);
+		ItemService item = new ItemService(dataSource);
+		
+		String catName = request.getParameter("createItem");
+		int catId = item.getSpecificCategory(catName);
 		
 		String name = request.getParameter("itemName");
 		
 		String cost = request.getParameter("itemCost");
+		double costNum = Double.parseDouble(cost);
+		
 		String desc = request.getParameter("itemDescription");
 		
 		System.out.println(name);
@@ -67,10 +79,11 @@ public class CreateItemServlet extends HttpServlet {
 		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
 		System.out.println(url);
 
+		// Create item
+		item.createItem(catId, name, costNum, url, desc);
 
         // call the itemservice to create the category in the database.
-		ItemService cat = new ItemService(dataSource);
-		cat.createCategory(name, url);
+		//item.createCategory(name, url);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
