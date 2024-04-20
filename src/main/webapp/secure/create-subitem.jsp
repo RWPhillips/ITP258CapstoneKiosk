@@ -21,7 +21,7 @@
 					<label for="itemCost">Enter the item's cost:</label>
 				</div>
 				<div class="padform">
-					<input type="number" class="" name="itemCost" maxlength="100">
+					<input type="number" step="0.01" class="" name="itemCost" maxlength="100">
 				</div>
 
 				<div class="padform">
