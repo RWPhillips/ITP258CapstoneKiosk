@@ -2,31 +2,33 @@ package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.itp258capstonekiosk.objects.AccountObject;
-import com.itp258capstonekiosk.services.AccountService;
 import com.itp258capstonekiosk.services.ItemService;
 
-@WebServlet("/GetCategoryServlet")
-public class GetCategoryServlet extends HttpServlet {
+
+/**
+ * Servlet implementation class DeleteItemServlet
+ */
+@WebServlet("/DeleteItemServlet")
+public class DeleteItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCategoryServlet() {
+    public DeleteItemServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,33 +38,7 @@ public class GetCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("inside getCat");
-		
-
-		ItemService itemService = new ItemService(dataSource);
-		
-        //Get the categories
-        ArrayList<String> categories = itemService.getCategories();
-        
-	    // Get ready to generate options with StringBuilder
-	    StringBuilder options = new StringBuilder();
-	    
-	    //add a default category
-	    options.append("<option value=\"Select a Category\">Select a Category</option>");
-	    
-	    // Go through each value in the arraylist
-	    for (String string : categories) {
-	    	
-	    	// Build the options string
-	        options.append("<option value=\"").append(string).append("\">").append(string).append("</option>");
-	    }
-
-	    // Set content type
-	    response.setContentType("text/html");
-	    
-	    // Write the options to the response
-	    response.getWriter().write(options.toString());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -70,7 +46,20 @@ public class GetCategoryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String name = request.getParameter("delItem");
+		System.out.println(name); 
+
+        ItemService item = new ItemService(dataSource);
+
+        // delete the item
+       	item.deleteItem(name);
+  
+
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-item.jsp");
+ 		dispatcher.forward(request, response);
+		
+		
 	}
 
 }

@@ -3,6 +3,7 @@ package com.itp258capstonekiosk.servlets;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +50,10 @@ public class CreateSubcategoryServlet extends HttpServlet {
 		ItemService item = new ItemService(dataSource);
 
 		item.createSubCategory(name);
+		
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-subitem-category.jsp");
+ 		dispatcher.forward(request, response);
 		
 		doGet(request, response);
 	}

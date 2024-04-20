@@ -58,7 +58,7 @@ public class ItemService {
 	    }
 	}
 
-	public void createSubItem(String name, double cost, int categoryID, String desc) {
+	public void createSubItem(String name, double cost, int categoryID) {
 
 	    //SubItemObject subItem = new SubItemObject();
 
@@ -69,11 +69,10 @@ public class ItemService {
 		    connection = database.getConnection();
 
             // The account doesn't exist, create it
-            CallableStatement callableStatement = connection.prepareCall("{CALL createNewSubItem(?, ?, ?, ?)}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL createNewSubItem(?, ?, ?)}");
             callableStatement.setString(1, name);
             callableStatement.setDouble(2, cost);
             callableStatement.setInt(3, categoryID);
-            callableStatement.setString(4, desc);
             callableStatement.execute();
 
             // Create item
@@ -280,7 +279,7 @@ public class ItemService {
 
 	        //iterate over the result set adding each string to the array
 	        while (resultSet.next()) {
-	        	String cat = resultSet.getString(2); 
+	        	String cat = resultSet.getString(1); 
 	        	strings.add(cat); 
 	        	//System.out.println(cat);
 	        }
@@ -474,6 +473,51 @@ public class ItemService {
         
         return items;
     }
+	public void deleteItem(String item) {
+
+		// Testing!
+		System.out.println("item to Delete: " + item);
+		
+		 try {
+
+			    // Connect to database
+			    database = new KioskDbUtil(dataSource);
+			    connection = database.getConnection();
+
+		        // delete the category
+		        callableStatement = connection.prepareCall("{CALL deleteItem(?)}");
+		        callableStatement.setString(1, item);
+		        callableStatement.execute(); 
+
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        // Close JDBC objects
+		        database.closeConnection(connection, callableStatement, resultSet);
+		    }
+
+	}
+	public void deleteSubItem(String subItem) {
+		// Testing!
+		System.out.println("Subitem to Delete: " + subItem);
+		 try {
+
+			    // Connect to database
+			    database = new KioskDbUtil(dataSource);
+			    connection = database.getConnection();
+
+		        // delete the category
+		        callableStatement = connection.prepareCall("{CALL deleteSubItem(?)}");
+		        callableStatement.setString(1, subItem);
+		        callableStatement.execute(); 
+
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        // Close JDBC objects
+		        database.closeConnection(connection, callableStatement, resultSet);
+		    }
+	}
 	
 }
 

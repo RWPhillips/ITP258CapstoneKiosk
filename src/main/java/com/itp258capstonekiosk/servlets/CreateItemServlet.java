@@ -86,7 +86,7 @@ public class CreateItemServlet extends HttpServlet {
 		//item.createCategory(name, url);
 
         // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-item.jsp");
  		dispatcher.forward(request, response);
 
 		doGet(request, response);

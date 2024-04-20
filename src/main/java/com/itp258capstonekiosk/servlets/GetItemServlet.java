@@ -51,6 +51,8 @@ public class GetItemServlet extends HttpServlet {
 
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
+	    
+	    options.append(false);
 
 	    // Go through each account in the array
 	    for (ItemObject i : itemList) {

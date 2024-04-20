@@ -3,6 +3,7 @@ package com.itp258capstonekiosk.servlets;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,10 @@ public class DeleteSubCategoryServlet extends HttpServlet {
 		System.out.println(subcat); 
 		
 		ItemService item = new ItemService(dataSource); 
+		
+        // Send to JSP page
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-subitem-category.jsp");
+ 		dispatcher.forward(request, response);
 		
 		item.deleteSubcategory(subcat);
 		// TODO Auto-generated method stub

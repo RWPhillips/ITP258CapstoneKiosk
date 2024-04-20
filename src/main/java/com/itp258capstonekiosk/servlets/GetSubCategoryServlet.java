@@ -47,6 +47,8 @@ public class GetSubCategoryServlet extends HttpServlet {
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
 	    
+	    options.append("<option value=\"Select a Category\">Select a Subitem category</option>");
+	    
 	    // Go through each account in the array
 	    for (String string : strings) {
 	    	

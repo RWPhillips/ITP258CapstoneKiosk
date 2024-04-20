@@ -2,7 +2,7 @@
 <section class="content">
 	<div class="container">
 		<div class="create">
-			<h2>Create an Item</h2>
+			<h2>Create a Subitem</h2>
 			<form action="${pageContext.request.contextPath}/CreateSubItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select an subitem category:</label>
@@ -23,21 +23,14 @@
 				<div class="padform">
 					<input type="number" step="0.01" class="" name="itemCost" maxlength="100">
 				</div>
-
-				<div class="padform">
-					<label for="itemDescription">Enter an item description:</label>
-				</div>
-				<div class="padform">
-					<input type="text" class="" name="itemDescription" maxlength="100">
-				</div>
 				<div class="padform">
 					<input type="submit" value="Create" class="createButton">
 				</div>
 			</form>
 		</div>
 		<div class="delete">
-				<h2>Delete an Item</h2>
-			<form action="${pageContext.request.contextPath}/CreateSubItemServlet" method="post" class="createForm"> 
+				<h2>Delete a Subitem</h2>
+			<form action="${pageContext.request.contextPath}/DeleteSubItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select a Subitem Category</label>
 				</div>

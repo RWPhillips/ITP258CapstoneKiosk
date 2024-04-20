@@ -64,13 +64,13 @@ public class CreateSubItemServlet extends HttpServlet {
 		String desc = request.getParameter("itemDescription");
 
 		// Create item
-		subItem.createSubItem(name, costNum, catId, desc);
+		subItem.createSubItem(name, costNum, catId);
 
         // call the itemservice to create the category in the database.
 		//item.createCategory(name, url);
 
         // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-category.jsp");
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/create-subitem.jsp");
  		dispatcher.forward(request, response);
 
 		doGet(request, response);
