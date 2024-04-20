@@ -13,32 +13,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
-import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.services.ItemService;
 
 /**
- * Servlet implementation class CreateItemServlet
+ * Servlet implementation class CreateSubItemServlet
  */
-@WebServlet("/CreateItemServlet")
+@WebServlet("/CreateSubItemServlet")
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 	    maxFileSize = 1024 * 1024 * 10,      // 10MB
 	    maxRequestSize = 1024 * 1024 * 50    // 50MB
 	)
-public class CreateItemServlet extends HttpServlet {
+public class CreateSubItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateItemServlet() {
+    public CreateSubItemServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -52,10 +51,10 @@ public class CreateItemServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ItemService item = new ItemService(dataSource);
+		ItemService subItem = new ItemService(dataSource);
 		
 		String catName = request.getParameter("createItem");
-		int catId = item.getSpecificCategory(catName);
+		int catId = subItem.getSpecificSubCategory(catName);
 		
 		String name = request.getParameter("itemName");
 		
@@ -63,24 +62,9 @@ public class CreateItemServlet extends HttpServlet {
 		double costNum = Double.parseDouble(cost);
 		
 		String desc = request.getParameter("itemDescription");
-		
-		System.out.println(name);
-
-		//get the file part
-		Part filePart = request.getPart("img");
-
-		//get the filename
-		String filename = filePart.getSubmittedFileName();
-
-		//call the service to store the image on the server.
-		ImageService.handleImageUpload(request, response);
-
-		//call the image service to add the image to the web server
-		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
-		System.out.println(url);
 
 		// Create item
-		item.createItem(catId, name, costNum, url, desc);
+		subItem.createSubItem(name, costNum, catId, desc);
 
         // call the itemservice to create the category in the database.
 		//item.createCategory(name, url);

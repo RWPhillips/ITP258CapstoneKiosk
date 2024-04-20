@@ -9,8 +9,6 @@
 				</div>
 				<div class="padform">
 					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
-						<!-- When hx-get does its thing, the options are automatically returned as the request from the Servlet -->
-						<!-- I really recommend looking at how it's done in the GetAccountServlet, very cool stuff. -->
 					</select><br>
 				</div>
 				<div class="padform">
@@ -29,7 +27,7 @@
 					<label for="itemImage">Upload an Image for the Item:</label>
 				</div>
 				<div class="padform">
-					<input type="file" class="" name="itemImage" maxlength="100" accept="image/*" >
+					<input type="file" class="" name="img" maxlength="100" accept="image/*" >
 				</div>
 				<div class="padform">
 					<label for="itemDescription">Enter an item description:</label>
@@ -49,8 +47,8 @@
 					<label for="selectCat">Select an item Category</label>
 				</div>
 				<div class="padform">
-					<select name="selectCat" class="">
-					</select>
+					<select name="selectCat" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
+					</select><br>
 				</div>
 				<div class="padform">
 					<label for="delItem">Select an item to delete</label>

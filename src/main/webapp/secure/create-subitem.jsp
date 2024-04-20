@@ -3,13 +3,13 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create an Item</h2>
-			<form action="CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateSubItemServlet" method="post" class="createForm"> 
 				<div class="padform">
 					<label for="createItem">Select an subitem category:</label>
 				</div>
 				<div class="padform">
-					<select name="createItem" class="delItem">
-					</select>
+					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubcategoryServlet" >
+					</select><br>
 				</div>
 				<div class="padform">
 					<label for="itemName">Enter an item name:</label>
@@ -42,8 +42,8 @@
 					<label for="selectCat">Select an item Category</label>
 				</div>
 				<div class="padform">
-					<select name="selectCat" class="">
-					</select>
+					<select name="createItem" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubcategoryServlet" >
+					</select><br>
 				</div>
 				<div class="padform">
 					<label for="delItem">Select an item to delete</label>
