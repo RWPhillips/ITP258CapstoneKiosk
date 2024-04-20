@@ -47,8 +47,8 @@
 					<label for="selectCat">Select an item Category</label>
 				</div>
 				<div class="padform">
-					<select name="selectCat" class="">
-					</select>
+					<select name="selectCat" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetCategoryServlet" >
+					</select><br>
 				</div>
 				<div class="padform">
 					<label for="delItem">Select an item to delete</label>
