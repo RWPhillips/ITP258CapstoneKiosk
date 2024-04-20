@@ -13,6 +13,10 @@ public class ItemObject {
 
 	public ItemObject() {
 	}
+	
+	public ItemObject(String name) {
+		this.name = name;
+	}
 
 	public ItemObject(int category, String name, double cost, String picture, String description) {
 		this.name = name;

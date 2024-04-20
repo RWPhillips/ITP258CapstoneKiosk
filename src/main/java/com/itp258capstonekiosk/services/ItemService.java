@@ -335,8 +335,10 @@ public class ItemService {
         return categories;
     }
 	
-	public ArrayList<ItemObject> getItemList() {
+	public ArrayList<ItemObject> getItemFromCategory() {
         ArrayList<ItemObject> items = new ArrayList<>();
+        
+        ItemObject item;
         
         try {
             // Connect to the database
@@ -349,6 +351,50 @@ public class ItemService {
             // Execute the query
             resultSet = callableStatement.executeQuery();
             
+            int count = 0;
+            
+            // Process the result set
+            while (resultSet.next()) {
+                String name = resultSet.getString(1);
+                
+                
+                // Create ItemObject instance
+                item = new ItemObject(name);
+                
+                // Add item to the ArrayList
+                items.add(item);
+                
+                count++;
+                System.out.println("Items Retrieved: " + count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close JDBC objects
+            database.closeConnection(connection, callableStatement, resultSet);
+        }
+        
+        return items;
+    }
+	
+	public ArrayList<ItemObject> getItemList() {
+        ArrayList<ItemObject> items = new ArrayList<>();
+        
+        ItemObject item;
+        
+        try {
+            // Connect to the database
+            database = new KioskDbUtil(dataSource);
+            connection = database.getConnection();
+            
+            // Prepare the SQL statement to get all items
+            CallableStatement callableStatement = connection.prepareCall("{CALL getItemList()}");
+            
+            // Execute the query
+            resultSet = callableStatement.executeQuery();
+            
+            int count = 0;
+            
             // Process the result set
             while (resultSet.next()) {
             	int category = resultSet.getInt(1);
@@ -359,10 +405,13 @@ public class ItemService {
                 
                 
                 // Create ItemObject instance
-                ItemObject item = new ItemObject(category, name, cost, picture, description);
+                item = new ItemObject(category, name, cost, picture, description);
                 
                 // Add item to the ArrayList
                 items.add(item);
+                
+                count++;
+                System.out.println("Items Retrieved: " + count);
             }
         } catch (SQLException e) {
             e.printStackTrace();

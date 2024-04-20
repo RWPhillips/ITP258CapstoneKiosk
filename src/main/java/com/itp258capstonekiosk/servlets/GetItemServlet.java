@@ -37,21 +37,12 @@ public class GetItemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 		System.out.println("Getting Items...");
 		
 		ItemService item = new ItemService(dataSource);
 		
         // Get status when deleting account (this no longer works, as we are not returning anything)
-        ArrayList<ItemObject> itemList = item.getItemList();
+        ArrayList<ItemObject> itemList = item.getItemFromCategory();
 
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
@@ -68,6 +59,15 @@ public class GetItemServlet extends HttpServlet {
 
 	    // Write the options to the response
 	    response.getWriter().write(options.toString());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+
 	}
 
 }
