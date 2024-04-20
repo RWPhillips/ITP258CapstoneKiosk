@@ -335,6 +335,53 @@ public class ItemService {
         return categories;
     }
 	
+	public ArrayList<ItemObject> getSubItemFromCategory(String name) {
+        ArrayList<ItemObject> items = new ArrayList<>();
+        
+        ItemObject subItem;
+        
+        // Convert Category to int
+        int catName = getSpecificSubCategory(name);
+        System.out.println("Got Category: " + name + " which is #" + catName);
+        
+        try {
+            // Connect to the database
+            database = new KioskDbUtil(dataSource);
+            connection = database.getConnection();
+            
+            // Prepare the SQL statement to get all items
+            CallableStatement callableStatement = connection.prepareCall("{CALL getSubItemList(?)}");
+            callableStatement.setInt(1, catName);
+            
+            // Execute the query
+            resultSet = callableStatement.executeQuery();
+            
+            int count = 0;
+            
+            // Process the result set
+            while (resultSet.next()) {
+                String subItemName = resultSet.getString(1);
+                
+                
+                // Create ItemObject instance
+                subItem = new ItemObject(subItemName);
+                
+                // Add item to the ArrayList
+                items.add(subItem);
+                
+                count++;
+                System.out.println("Items Retrieved: " + count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close JDBC objects
+            database.closeConnection(connection, callableStatement, resultSet);
+        }
+        
+        return items;
+    }
+	
 	public ArrayList<ItemObject> getItemFromCategory(String name) {
         ArrayList<ItemObject> items = new ArrayList<>();
         
