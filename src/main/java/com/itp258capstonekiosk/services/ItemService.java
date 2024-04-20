@@ -335,10 +335,14 @@ public class ItemService {
         return categories;
     }
 	
-	public ArrayList<ItemObject> getItemFromCategory() {
+	public ArrayList<ItemObject> getItemFromCategory(String name) {
         ArrayList<ItemObject> items = new ArrayList<>();
         
         ItemObject item;
+        
+        // Convert Category to int
+        int catName = getSpecificCategory(name);
+        System.out.println("Got Category: " + name + " which is #" + catName);
         
         try {
             // Connect to the database
@@ -346,7 +350,8 @@ public class ItemService {
             connection = database.getConnection();
             
             // Prepare the SQL statement to get all items
-            CallableStatement callableStatement = connection.prepareCall("{CALL getItemList()}");
+            CallableStatement callableStatement = connection.prepareCall("{CALL getItemList(?)}");
+            callableStatement.setInt(1, catName);
             
             // Execute the query
             resultSet = callableStatement.executeQuery();
@@ -355,11 +360,11 @@ public class ItemService {
             
             // Process the result set
             while (resultSet.next()) {
-                String name = resultSet.getString(1);
+                String itemName = resultSet.getString(1);
                 
                 
                 // Create ItemObject instance
-                item = new ItemObject(name);
+                item = new ItemObject(itemName);
                 
                 // Add item to the ArrayList
                 items.add(item);

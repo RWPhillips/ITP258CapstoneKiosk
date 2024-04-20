@@ -41,8 +41,10 @@ public class GetItemServlet extends HttpServlet {
 		
 		ItemService item = new ItemService(dataSource);
 		
-        // Get status when deleting account (this no longer works, as we are not returning anything)
-        ArrayList<ItemObject> itemList = item.getItemFromCategory();
+		String cat = request.getParameter("selectCat");
+		
+        // Get items from certain category only
+        ArrayList<ItemObject> itemList = item.getItemFromCategory(cat);
 
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
