@@ -8,6 +8,10 @@ public class SubItemObject {
 
 	public SubItemObject() {
 	}
+	
+	public SubItemObject(String name) {
+		this.name = name;
+	}
 
 	public SubItemObject(String name, double cost, int category) {
 		this.name = name;

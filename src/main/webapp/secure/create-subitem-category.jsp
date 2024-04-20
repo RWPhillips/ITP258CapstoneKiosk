@@ -22,7 +22,7 @@
 					<label for="delSubcategory">Select a Subcategory to delete:</label>
 				</div>
 				<div class="padform">
-					<select name="delSubcategory" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubcategoryServlet">
+					<select name="delSubcategory" class="" hx-trigger="load" hx-get="${pageContext.request.contextPath}/GetSubCategoryServlet">
 					</select>
 				</div>
 				<p class="reminder">Subitem category must be empty to be deleted

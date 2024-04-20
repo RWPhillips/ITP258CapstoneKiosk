@@ -335,10 +335,10 @@ public class ItemService {
         return categories;
     }
 	
-	public ArrayList<ItemObject> getSubItemFromCategory(String name) {
-        ArrayList<ItemObject> items = new ArrayList<>();
+	public ArrayList<SubItemObject> getSubItemFromCategory(String name) {
+        ArrayList<SubItemObject> subItems = new ArrayList<>();
         
-        ItemObject subItem;
+        SubItemObject subItem;
         
         // Convert Category to int
         int catName = getSpecificSubCategory(name);
@@ -364,10 +364,10 @@ public class ItemService {
                 
                 
                 // Create ItemObject instance
-                subItem = new ItemObject(subItemName);
+                subItem = new SubItemObject(subItemName);
                 
                 // Add item to the ArrayList
-                items.add(subItem);
+                subItems.add(subItem);
                 
                 count++;
                 System.out.println("Items Retrieved: " + count);
@@ -379,7 +379,7 @@ public class ItemService {
             database.closeConnection(connection, callableStatement, resultSet);
         }
         
-        return items;
+        return subItems;
     }
 	
 	public ArrayList<ItemObject> getItemFromCategory(String name) {

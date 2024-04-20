@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.ItemObject;
+import com.itp258capstonekiosk.objects.SubItemObject;
 import com.itp258capstonekiosk.services.ItemService;
 
 /**
@@ -37,20 +38,21 @@ public class GetSubItemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-System.out.println("Getting Items...");
+		System.out.println("Getting Sub Items...");
 		
-		ItemService item = new ItemService(dataSource);
+		ItemService subItem = new ItemService(dataSource);
 		
-		String cat = request.getParameter("selectCat");
+		String subCat = request.getParameter("selectCat");
+		System.out.println("Sub Category Pulled: " + subCat);
 		
         // Get items from certain category only
-        ArrayList<ItemObject> itemList = item.getSubItemFromCategory(cat);
+        ArrayList<SubItemObject> subItemList = subItem.getSubItemFromCategory(subCat);
 
 	    // Get ready to generate options with StringBuilder
 	    StringBuilder options = new StringBuilder();
 
 	    // Go through each account in the array
-	    for (ItemObject i : itemList) {
+	    for (SubItemObject i : subItemList) {
 
 	    	// Build the options string
 	        options.append("<option value=\"").append(i.getName()).append("\">").append(i.getName()).append("</option>");
