@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="create">
 			<h2>Create an Item</h2>
-			<form action="${pageContext.request.contextPath}/CreateItemServlet" method="post" class="createForm"> 
+			<form action="${pageContext.request.contextPath}/CreateItemServlet" method="post" class="createForm" enctype="multipart/form-data"> 
 				<div class="padform">
 					<label for="createItem">Select an item category:</label>
 				</div>
@@ -29,7 +29,7 @@
 					<label for="itemImage">Upload an Image for the Item:</label>
 				</div>
 				<div class="padform">
-					<input type="file" class="" name="itemImage" maxlength="100" accept="image/*" >
+					<input type="file" class="" name="img" maxlength="100" accept="image/*" >
 				</div>
 				<div class="padform">
 					<label for="itemDescription">Enter an item description:</label>

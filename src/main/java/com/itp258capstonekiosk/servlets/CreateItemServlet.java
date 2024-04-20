@@ -67,7 +67,7 @@ public class CreateItemServlet extends HttpServlet {
 		System.out.println(name);
 
 		//get the file part
-		Part filePart = request.getPart("itemImage");
+		Part filePart = request.getPart("img");
 
 		//get the filename
 		String filename = filePart.getSubmittedFileName();

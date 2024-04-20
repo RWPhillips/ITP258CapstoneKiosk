@@ -28,13 +28,15 @@ public class ItemService {
 
 	public void createItem(int categoryID, String name, double cost, String imageUrl, String description) {
 
-	    ItemObject item = new ItemObject();
+	    //ItemObject item = new ItemObject();
 
 	    try {
 
 		    // Connect to database
 		    database = new KioskDbUtil(dataSource);
 		    connection = database.getConnection();
+		    
+		    System.out.println(categoryID + " - " + name + " - " + cost + " - " + imageUrl + " - " + description);
 
             // The account doesn't exist, create it
             CallableStatement callableStatement = connection.prepareCall("{CALL createNewItem(?, ?, ?, ?, ?)}");
@@ -43,9 +45,10 @@ public class ItemService {
             callableStatement.setDouble(3, cost);
             callableStatement.setString(4, imageUrl);
             callableStatement.setString(5, description);
+            callableStatement.execute();
 
             // Create item
-            item = new ItemObject(resultSet.getInt(1), resultSet.getString(2), resultSet.getDouble(3), resultSet.getString(4), resultSet.getString(5));
+            //item = new ItemObject(resultSet.getInt(1), resultSet.getString(2), resultSet.getDouble(3), resultSet.getString(4), resultSet.getString(5));
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -70,6 +73,7 @@ public class ItemService {
             callableStatement.setString(1, name);
             callableStatement.setDouble(2, cost);
             callableStatement.setInt(3, categoryID);
+            callableStatement.execute();
 
             // Create item
             subItem = new SubItemObject(resultSet.getString(1), resultSet.getDouble(2), resultSet.getInt(3));
