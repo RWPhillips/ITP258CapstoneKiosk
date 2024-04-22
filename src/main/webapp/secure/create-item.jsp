@@ -33,7 +33,7 @@
 					<label for="itemDescription">Enter an item description:</label>
 				</div>
 				<div class="padform">
-					<input type="text" class="" name="itemDescription" maxlength="100">
+					<input type="text" class="" name="itemDescription" maxlength="1000">
 				</div>
 				<div class="padform">
 					<input type="submit" value="Create" class="createButton">

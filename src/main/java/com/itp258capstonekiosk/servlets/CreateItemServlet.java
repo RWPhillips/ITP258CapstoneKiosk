@@ -76,7 +76,7 @@ public class CreateItemServlet extends HttpServlet {
 		ImageService.handleImageUpload(request, response);
 
 		//call the image service to add the image to the web server
-		String url = request.getHeader("Host") + "/ITP258CapstoneKiosk/images/" + filename;
+		String url =" /images/" + filename;
 		System.out.println(url);
 
 		// Create item

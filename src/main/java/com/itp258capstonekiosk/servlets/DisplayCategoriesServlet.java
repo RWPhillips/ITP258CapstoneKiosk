@@ -50,7 +50,7 @@ public class DisplayCategoriesServlet extends HttpServlet {
 			html = html + "<button class=\"catContainer\" name=\"" + category.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/DisplayItemsServlet\" hx-target=\".content\" >" +
 			"<img src=\"" + category.getImageURL() + "\" class=\"catImg\"><p class=\"catText\">" + category.getName() + "</p></button>"; 
 			
-						System.out.println(html); 
+						//System.out.println(html); 
 		}
 		
 	    // Set content type
