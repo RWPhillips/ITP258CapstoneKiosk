@@ -560,12 +560,24 @@ public class ItemService {
     }
 	
 	public double cartTotal(ArrayList<ItemObject> cartItems) {
-		
         double total = 0.0;
         
-        // Iterate over cart items and sum their costs
-        for (ItemObject item : cartItems) {
-            total += item.getCost();
+        // Checks first if cartItems is empty
+        if (cartItems != null && !cartItems.isEmpty()) {
+            // Not empty? Iterate over cart items
+            for (ItemObject item : cartItems) {
+                // Add cost of the main item
+                total += item.getCost();
+                
+                // Check if item has subitems and the list is not empty
+                ArrayList<SubItemObject> subItems = item.getSubItems();
+                if (subItems != null && !subItems.isEmpty()) {
+                    // Iterate over subitems and add their costs
+                    for (SubItemObject subItem : subItems) {
+                        total += subItem.getCost();
+                    }
+                }
+            }
         }
         
         return total;
