@@ -406,11 +406,16 @@ public class ItemService {
             
             // Process the result set
             while (resultSet.next()) {
-                String itemName = resultSet.getString(1);
+            	int catID = resultSet.getInt(1); 
+                String itemName = resultSet.getString(2);
+                double cost = resultSet.getDouble(3); 
+                String url = resultSet.getString(4);
+                String desc = resultSet.getString(5);
+                
                 
                 
                 // Create ItemObject instance
-                item = new ItemObject(itemName);
+                item = new ItemObject(catID, itemName, cost, url, desc);
                 
                 // Add item to the ArrayList
                 items.add(item);
@@ -429,7 +434,6 @@ public class ItemService {
     }
 	
 	public ArrayList<ItemObject> getItemList() {
-		
         ArrayList<ItemObject> items = new ArrayList<>();
         
         ItemObject item;
@@ -452,8 +456,9 @@ public class ItemService {
             	int category = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 double cost = resultSet.getDouble(3);
-                String picture = resultSet.getString(4);
-                String description = resultSet.getString(5);
+                String description = resultSet.getString(4);
+                String picture = resultSet.getString(5);
+                
                 
                 // Create ItemObject instance
                 item = new ItemObject(category, name, cost, picture, description);
@@ -583,5 +588,6 @@ public class ItemService {
         return total;
     }
 	
+
 }
 

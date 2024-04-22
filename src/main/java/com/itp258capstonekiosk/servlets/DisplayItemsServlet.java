@@ -53,7 +53,7 @@ public class DisplayItemsServlet extends HttpServlet {
 		String html = "<h2 class=\"contentH2\">" + category + "</h2><div class=\"contentContainer\">" ; 
 		
 		for (ItemObject catitem : items) {
-			html = html + "<button class=\"catContainer\" name=\"" + catitem.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/ItemDetailServlet\" hx-target=\".content\" >" +
+			html = html + "<button class=\"catContainer\" name=\"" + catitem.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/ItemDetailsServlet\" hx-target=\".content\" >" +
 			"<img src=\"" + catitem.getPicture() + "\" class=\"catImg\"><p class=\"catText\">" +  catitem.getName() + "</p></button>"; 
 			
 						System.out.println(html); 
