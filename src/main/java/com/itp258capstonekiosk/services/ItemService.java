@@ -545,8 +545,8 @@ public class ItemService {
             	int category = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 double cost = resultSet.getDouble(3);
-                String description = resultSet.getString(4);
-                String picture = resultSet.getString(5);
+                String description = resultSet.getString(5);
+                String picture = resultSet.getString(4);
                 
                 // Create ItemObject instance
                 item = new ItemObject(category, name, cost, picture, description);

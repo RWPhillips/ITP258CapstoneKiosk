@@ -1,15 +1,14 @@
 .content {
 	overflow-y: scroll;
     scrollbar-width: none;  
-    -ms-overflow-style: none;  
+    -ms-overflow-style: none; 
+    width: 60vw;  
 }
 
 .contentContainer {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr; 
 	box-sizing: border-box; 
-
-	
 }
 
 .contentH2{
@@ -17,3 +16,71 @@
 	font-weight: 500; 
 	font-family: "Segoe UI Black", Arial, sans-serif;
 }
+
+.item {
+	display: grid;
+	grid-template-rows: 45vh 30vh;  
+	box-sizing: border-box; 
+	margin-top: 2vh; 
+	width: 60vw;
+	height: 75vh; 
+	
+}
+
+.imgBox {
+	justify-self: center; 
+	height: 45vh; 
+	width: 53vw; 
+	margin-bottom: 1vh; 
+}
+
+.picture {
+	height: 45vh; 
+	width: 53vw; 
+	object-fit: contain; 
+
+	}
+
+.stats {
+	box-sizing: border-bix; 
+	margin-left: 1vw; 
+	margin-right: 1vw; 
+	display: grid; 
+	
+}
+.cost {
+	justify-self: end; 
+	margin: 0px; 
+	margin-right: 1vw;
+	margin-bottom: 1vh; 
+}
+
+.customize {
+	width: 20vw; 
+	height: 10vh; 
+	margin: 0px;
+	margin-left: 5vw; 
+}
+
+.buttonContainer { 
+	margin-top: 1vh; 
+	display: grid; 
+	grid-template-columns: auto auto; 
+}
+
+.addCart {
+	width: 20vw; 
+	height: 10vh; 
+	margin: 0px;
+	justify-self: end;
+	margin-right: 5vw; 
+}
+
+.desc {
+	margin: 0px;
+	display: inline-block; 
+
+}
+
+
+
