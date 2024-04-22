@@ -429,6 +429,7 @@ public class ItemService {
     }
 	
 	public ArrayList<ItemObject> getItemList() {
+		
         ArrayList<ItemObject> items = new ArrayList<>();
         
         ItemObject item;
@@ -451,9 +452,8 @@ public class ItemService {
             	int category = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 double cost = resultSet.getDouble(3);
-                String description = resultSet.getString(4);
-                String picture = resultSet.getString(5);
-                
+                String picture = resultSet.getString(4);
+                String description = resultSet.getString(5);
                 
                 // Create ItemObject instance
                 item = new ItemObject(category, name, cost, picture, description);
@@ -518,6 +518,46 @@ public class ItemService {
 		        database.closeConnection(connection, callableStatement, resultSet);
 		    }
 	}
+	
+	public ItemObject getCompleteItem(String itemName) {
+		
+        ItemObject item = null;
+        
+        try {
+            // Connect to the database
+            database = new KioskDbUtil(dataSource);
+            connection = database.getConnection();
+            
+            // Prepare the SQL statement to get item details by name
+            callableStatement = connection.prepareCall("{CALL getCompleteItem(?)}");
+            callableStatement.setString(1, itemName);
+            
+            // Execute the query
+            resultSet = callableStatement.executeQuery();
+            
+            // Check if result set has data
+            if (resultSet.next()) {
+            	int category = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                double cost = resultSet.getDouble(3);
+                String description = resultSet.getString(4);
+                String picture = resultSet.getString(5);
+                
+                // Create ItemObject instance
+                item = new ItemObject(category, name, cost, picture, description);
+                
+                // We can fetch subItems and set them here if needed
+                // item.setSubItems(fetchSubItems(itemName));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close JDBC objects
+            database.closeConnection(connection, callableStatement, resultSet);
+        }
+        
+        return item;
+    }
 	
 }
 
