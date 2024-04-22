@@ -50,7 +50,7 @@ public class DisplayItemsServlet extends HttpServlet {
 		ItemService item = new ItemService(dataSource);
 		ArrayList<ItemObject> items = item.getItemFromCategory(category); 
 
-		String html = ""; 
+		String html = "<h2 class=\"contentH2\">" + category + "</h2><div class=\"contentContainer\">" ; 
 		
 		for (ItemObject catitem : items) {
 			html = html + "<button class=\"catContainer\" name=\"" + catitem.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/ItemDetailServlet\" hx-target=\".content\" >" +
@@ -58,6 +58,8 @@ public class DisplayItemsServlet extends HttpServlet {
 			
 						System.out.println(html); 
 		}
+		
+		html = html + "</div>";
 	    // Set content type
 	    response.setContentType("text/html");
 

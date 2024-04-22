@@ -1,0 +1,19 @@
+.content {
+	overflow-y: scroll;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+}
+
+.contentContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr; 
+	box-sizing: border-box; 
+
+	
+}
+
+.contentH2{
+	text-transform: uppercase;
+	font-weight: 500; 
+	font-family: "Segoe UI Black", Arial, sans-serif;
+}
