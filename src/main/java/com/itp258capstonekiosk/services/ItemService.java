@@ -559,5 +559,17 @@ public class ItemService {
         return item;
     }
 	
+	public double cartTotal(ArrayList<ItemObject> cartItems) {
+		
+        double total = 0.0;
+        
+        // Iterate over cart items and sum their costs
+        for (ItemObject item : cartItems) {
+            total += item.getCost();
+        }
+        
+        return total;
+    }
+	
 }
 
