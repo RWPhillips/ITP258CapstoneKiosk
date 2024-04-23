@@ -1,8 +1,9 @@
 package com.itp258capstonekiosk.objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ItemObject {
+public class ItemObject implements Serializable {
 
 	private String name;
 	private int category;

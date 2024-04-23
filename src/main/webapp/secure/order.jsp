@@ -5,7 +5,7 @@
 
 		<section class="color">
 		<div class="content">
-			<h2 class="title"></h2>
+			<h2 class="title">Add Items from Categories on the Left</h2>
 		</div>
 	
 		</section>

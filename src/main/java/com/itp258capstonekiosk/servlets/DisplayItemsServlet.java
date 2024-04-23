@@ -45,8 +45,6 @@ public class DisplayItemsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	
-		
 		//get the category name out of the header. 
 		String category = request.getHeader("hx-trigger-name");
 
@@ -60,7 +58,7 @@ public class DisplayItemsServlet extends HttpServlet {
 			html = html + "<button class=\"catContainer\" name=\"" + catitem.getName() + "\"  hx-get=\"/ITP258CapstoneKiosk/ItemDetailsServlet\" hx-target=\".content\" >" +
 			"<img src=\"" + catitem.getPicture() + "\" class=\"catImg\"><p class=\"catText\">" +  catitem.getName() + "</p></button>"; 
 			
-						System.out.println(html); 
+						//System.out.println(html); 
 		}
 		
 		html = html + "</div>";

@@ -57,7 +57,7 @@ public class CustomizeItemServlet extends HttpServlet {
 		ArrayList<String> subcat = item.getSubCategories();
 		
 		//string to hold the html
-		String html = "<form class=\"customizeForm\">"; 
+		String html = "<form class=\"customizeForm\" hx-get=\"/ITP258CapstoneKiosk/CartServlet\" hx-target=\".content\">"; 
 		
 		//loop over the array list constructing the html
 		for (String catName : subcat) {
@@ -66,14 +66,14 @@ public class CustomizeItemServlet extends HttpServlet {
 			ArrayList<SubItemObject> sub  = item.getFullSubItems(catName);
 			for (SubItemObject object : sub) {
 				html = html + "<div class=\"checkLabels\"><input type=\"checkbox\" class=\"hidden\" id=\"" 
-						+ object.getName()  +"\" class=\"subitems[]\" value=\"" + object.getName() + "\"><label class=\"subLabel\" for=\"" + object.getName() + "\">" + object.getName() + " " + nf.format(object.getCost())  + "</label></div>";  
+						+ object.getName()  +"\" name=\"subitems\" value=\"" + object.getName() + "\"><label class=\"subLabel\" for=\"" + object.getName() + "\">" + object.getName() + " " + nf.format(object.getCost())  + "</label></div>";  
 			}
 			html = html + "</div></div>";
 		}
 
 		
 		//add the checkout button. 
-		html = html + "</div><div class=\"cartButton\"><button class=\"customCart\" name=\"" + name + "\" hx-get=\"/ITP258CapstoneKiosk/CartServlet\" hx-target=\".content\">Add to Cart</button></div></div>";
+		html = html + "</div><div class=\"cartButton\"><button class=\"customCart\" name=\"" + name + "\" >Add to Cart</button></div></div>";
 		//close the form
 		html = html + "</form>";
 		

@@ -40,10 +40,7 @@ public class ItemDetailsServlet extends HttpServlet {
 		String name = request.getHeader("hx-trigger-name");
 		
 		//create an http session
-		HttpSession session = request.getSession(); 
-		
-		
-		System.out.println(name); 
+		HttpSession session = request.getSession();  
 		
 		ItemService itemService = new ItemService(dataSource); 
 		
@@ -53,6 +50,9 @@ public class ItemDetailsServlet extends HttpServlet {
 		
 		//add the current item being worked with to the http session
 		session.setAttribute("orderItem",item);
+		
+		ItemObject test = (ItemObject) session.getAttribute("orderItem"); 
+		System.out.println(test.getName());
 		
 		//System.out.println("cat: " + item.getCategory() + " name: " + item.getName() + " cost: " + item.getCost() + " url: " + item.getPicture() + " desc: " + item.getDescription());
 		
@@ -64,7 +64,7 @@ public class ItemDetailsServlet extends HttpServlet {
 				"\"  hx-get=\"/ITP258CapstoneKiosk/CustomizeItemServlet\" hx-target=\".content\">Customize</button><button class=\"addCart\" name=\"" + item.getName() 
 				+ "\"  hx-get=\"/ITP258CapstoneKiosk/CartServlet\" hx-target=\".content\">Add to Cart</button></div></div></div>";
 		
-		System.out.println(html); 
+		//System.out.println(html); 
 	
 	    // Set content type
 	    response.setContentType("text/html");

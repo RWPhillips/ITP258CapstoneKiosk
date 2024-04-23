@@ -2,9 +2,7 @@ package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,16 +14,16 @@ import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.objects.SubItemObject;
 
 /**
- * Servlet implementation class CartServlet
+ * Servlet implementation class DisplayCartServlet
  */
-@WebServlet("/CartServlet")
-public class CartServlet extends HttpServlet {
+@WebServlet("/DisplayCartServlet")
+public class DisplayCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartServlet() {
+    public DisplayCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,39 +32,40 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
-		// Get object
+		//start the session
 		HttpSession session = request.getSession();
-		ItemObject item = (ItemObject) session.getAttribute("orderItem");
 		
-		// Get strings
-		String[] subItems = request.getParameterValues("subitems");
+		//fetch the arraylist from the session
+		ArrayList<ItemObject> cart = (ArrayList<ItemObject>) session.getAttribute("cart");
 		
-
-		if (subItems != null) {
-			// Make sub-object array
-			ArrayList<SubItemObject> subList = new ArrayList<SubItemObject>();
+		//System.out.println("Cart Contents:");
 		
-			// Go through each string, create a new sub object with the string, and then store it into sub-object array
-			for (String i : subItems) {
-				SubItemObject newSub = new SubItemObject(i);
-				subList.add(newSub);
+		double total = 0; 
+		//iterate over the array
+		for (ItemObject obj : cart ) {
+			//add the cost of the item to the total
+			total += obj.getCost();
+			System.out.println("Obj Cost is: " + obj.getCost());
+			
+			
+			
+			//if the item has a sub items array, iterate over it
+			if (obj.getSubItems() != null) {
+				for (SubItemObject sub : obj.getSubItems()) {
+					total += sub.getCost();
+					System.out.println("Subobj cost: " + sub.getCost());
+				}
 			}
-		
-			// Add all sub items to the item
-			item.setSubItems(subList);
-		}
-		ArrayList<ItemObject> items = (ArrayList<ItemObject>)session.getAttribute("cart");  
-		if (items == null ) {
-			items = new ArrayList<ItemObject>(); 
 		}
 		
-		items.add(item); 
-
-		// Store in the cart session header
-		session.setAttribute("cart", items);
+		System.out.println("Total at end" + total); 
 		
-		request.getRequestDispatcher("secure/ItemAdded.jsp").forward(request, response); 
+		
+		
+		request.getRequestDispatcher("secure/updatedcart.jsp").forward(request, response); 
+		
 	}
 
 	/**
