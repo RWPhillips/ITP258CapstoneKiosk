@@ -28,10 +28,11 @@
 }
 
 .imgBox {
+	box-sizing: border-box; 
 	justify-self: center; 
 	height: 45vh; 
 	width: 53vw; 
-	margin-bottom: 1vh; 
+	
 }
 
 .picture {
@@ -45,6 +46,7 @@
 	box-sizing: border-bix; 
 	margin-left: 1vw; 
 	margin-right: 1vw; 
+	margin-top: 2vh; 
 	display: grid; 
 	
 }
@@ -53,6 +55,7 @@
 	margin: 0px; 
 	margin-right: 1vw;
 	margin-bottom: 1vh; 
+	font-weight: 500; 
 }
 
 .customize {
@@ -79,8 +82,12 @@
 .desc {
 	margin: 0px;
 	display: inline-block; 
+	margin-left: 1vw;
+	margin-right: 1vw; 
 
 }
 
-
+.checkLabel {
+	font: 12px; 
+}
 

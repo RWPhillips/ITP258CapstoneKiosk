@@ -1,6 +1,7 @@
 package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -27,6 +28,8 @@ public class DisplayItemsServlet extends HttpServlet {
 
 	@Resource(name = "jdbc/kioskdatabase")
 	private DataSource dataSource;
+	
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,7 +44,8 @@ public class DisplayItemsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+	
 		
 		//get the category name out of the header. 
 		String category = request.getHeader("hx-trigger-name");

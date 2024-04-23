@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.ItemObject;
@@ -38,6 +39,10 @@ public class ItemDetailsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getHeader("hx-trigger-name");
 		
+		//create an http session
+		HttpSession session = request.getSession(); 
+		
+		
 		System.out.println(name); 
 		
 		ItemService itemService = new ItemService(dataSource); 
@@ -45,6 +50,9 @@ public class ItemDetailsServlet extends HttpServlet {
 		//ItemObject item = new ItemObject(16, "Al Pastor Tacos", 12.99, "/images/Tacos.jpg", "Yes, Tacos are a sandwich! Four Al pastor tacos served with onions and cilantro on house made corn tortillas."); 
 		
 		ItemObject item = itemService.getCompleteItem(name); 
+		
+		//add the current item being worked with to the http session
+		session.setAttribute("orderItem",item);
 		
 		//System.out.println("cat: " + item.getCategory() + " name: " + item.getName() + " cost: " + item.getCost() + " url: " + item.getPicture() + " desc: " + item.getDescription());
 		
