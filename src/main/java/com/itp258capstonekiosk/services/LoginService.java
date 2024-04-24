@@ -85,4 +85,36 @@ public class LoginService {
 
         return storedHashedPassword;
     }
+    
+    public int checkLoginAuth(String username) {
+
+    	int accountType = 0;
+    	
+        try {
+
+        	if (connection == null) {
+        		database = new KioskDbUtil(dataSource);
+    			connection = database.getConnection();
+        	}
+
+            // Define the SQL query to retrieve the hashed password
+            String sqlQuery = "SELECT accountTypeID FROM accounts WHERE username = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, username);
+
+            // Execute the query and retrieve the result
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Retrieve the hashed password from the result set
+                accountType = resultSet.getInt("accountTypeID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any database-related exceptions
+        }
+
+        return accountType;
+    }
 }
