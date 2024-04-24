@@ -57,7 +57,7 @@ public class CustomizeItemServlet extends HttpServlet {
 		ArrayList<String> subcat = item.getSubCategories();
 		
 		//string to hold the html
-		String html = "<form class=\"customizeForm\" hx-get=\"/ITP258CapstoneKiosk/CartServlet\" hx-target=\".content\">"; 
+		String html = "<form class=\"customizeForm\" hx-get=\"/ITP258CapstoneKiosk/CartServlet\" hx-target=\".content\" name=\"form\">"; 
 		
 		//loop over the array list constructing the html
 		for (String catName : subcat) {

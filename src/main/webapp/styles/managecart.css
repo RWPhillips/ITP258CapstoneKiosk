@@ -1,0 +1,49 @@
+.manageCart {
+	width: 55vw; 
+	padding-bottom: .75vh; 
+}
+
+.cartManagement {
+	height: 75vh; 
+	box-sizing: border-box; 
+	position: absolute; 
+	border-left: 1vw solid #EA563C; 
+	background-color: white; 
+	margin-right: 1vw;
+	width: 58vw;  
+	overflow-y: scroll;
+    scrollbar-width: none;  
+    -ms-overflow-style: none; 
+    display: grid; 
+    grid-template-rows: 10% 70% auto; 
+}
+
+.subPCont {
+	width: 100%; 
+	display:grid;
+	grid-template-columns: 1vw 27vw 27vw; 
+}
+
+.subLabel {
+	display:grid;
+	grid-template-columns: auto auto; 
+}
+
+
+
+.manageCost {
+	justify-self: right; 
+	margin-right: 2vh; 
+	max-height: min-content;
+}
+.manageItem {
+	max-height: min-content;
+}
+
+.displayName {
+	align-self: left; 
+}
+
+.displayCost {
+	align-self: right; 
+}

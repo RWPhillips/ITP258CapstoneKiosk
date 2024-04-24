@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/orderfooter.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/content.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/updatedcart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/managecart.css">
 
 <script src="https://unpkg.com/htmx.org@1.9.3"></script>
 

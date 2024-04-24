@@ -56,7 +56,7 @@ public class CartServlet extends HttpServlet {
 			// Make sub-object array
 			ArrayList<SubItemObject> subList = new ArrayList<SubItemObject>();
 		
-			// Go through each string, create a new sub object with the string, and then store it into sub-object array
+			// Go through array, grab each string, pass to db to get object, create object and store. 
 			for (String i : subItems) {
 				
 				
@@ -72,12 +72,26 @@ public class CartServlet extends HttpServlet {
 			items = new ArrayList<ItemObject>(); 
 		}
 		
-		items.add(item); 
-
+		//if theres a value in the header get it
+		String header = request.getHeader("hx-trigger-name");
+		
+		//add the item only if checkout is empty. otherwise this will readd if the page is refreshed. 
+		if (!header.equalsIgnoreCase("checkout")) {
+			items.add(item); 
+		}
 		// Store in the cart session header
 		session.setAttribute("cart", items);
 		
-		request.getRequestDispatcher("secure/ItemAdded.jsp").forward(request, response); 
+		
+
+		
+		System.out.println(header);
+		
+		//if the header is checkout, direct to the manage account page, otherwise, direct to the message about successfully adding an item. 
+		if (header.equalsIgnoreCase("checkout")) {
+			request.getRequestDispatcher("secure/manageCart.jsp").forward(request, response);
+			}
+		else request.getRequestDispatcher("secure/ItemAdded.jsp").forward(request, response); 
 	}
 
 	/**
