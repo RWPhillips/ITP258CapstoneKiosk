@@ -23,6 +23,7 @@
 				<li><a class="header-li" href="${pageContext.request.contextPath}/secure/create-item.jsp">Manage Items</a></li>
 				<li><a class="header-li" href="${pageContext.request.contextPath}/secure/create-subitem-category.jsp">Manage Subitem Categories</a></li>
 				<li><a class="header-li" href="${pageContext.request.contextPath}/secure/create-subitem.jsp">Manage Subitems</a></li>
+				<li><a class="header-li" href="${pageContext.request.contextPath}/secure/order.jsp">View Kiosk</a></li>
 			</ul>
 		</nav>
 	</header>
