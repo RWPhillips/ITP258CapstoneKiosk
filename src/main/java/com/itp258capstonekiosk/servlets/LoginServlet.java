@@ -61,7 +61,14 @@ public class LoginServlet extends HttpServlet {
 
 	        // Store user information in the session
 	        session.setAttribute("username", username);
-	        session.setAttribute("Role", "user");
+	        
+	        int userAccount = login.checkLoginAuth(username);
+	        
+	        if (userAccount == 3)
+	        	session.setAttribute("Role", "admin");
+	        else
+	        	session.setAttribute("Role", "user");
+	        
 	        session.setAttribute("authenticated", true);
 
             // Generate a secure token
@@ -76,9 +83,14 @@ public class LoginServlet extends HttpServlet {
 
 	        // Redirect the user to the main page
 	        System.out.println("Your login is valid!");
+	        
+	        RequestDispatcher dispatcher;
+	        
+		    if (session.getAttribute("Role") == "admin")
+		    	dispatcher = request.getRequestDispatcher("/secure/account.jsp");
+		    else
+		    	dispatcher = request.getRequestDispatcher("/secure/splash-screen.jsp");
 
-	        // Send to JSP page
-	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/account.jsp");
 	 		dispatcher.forward(request, response);
 
 	    } else {
