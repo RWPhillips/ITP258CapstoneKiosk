@@ -1,28 +1,23 @@
-.upcart {
-	height: 100%; 
-	box-sizing: border-box; 
-	position: relative;  
-	background-color: white;
-	width: 100%;
-}
-
 .totalright {
 	justify-self: right;  
 }
 
 .orderItems {
-	display: grid;
-	grid-template-columns: 1fr 1fr; 
 	margin-left: 1vw; 
+	width: 100%; 
+ 	overflow-y: scroll; 
+
 }
 
 .cartHeader {
 	margin-bottom: 0; 
 }
 
-.orderItems {
+.shoppingCart {
+	width: 17vw; 
 	display: grid; 
-	grid-auto-rows: max-content; 
+	grid-template-columns: auto auto; 
+	padding-bottom: .75vh; 
 }
 
 .cartCost {
@@ -32,4 +27,20 @@
 }
 .cartItem {
 	max-height: min-content;
+
+}
+
+.subCost {
+	justify-self: right; 
+	margin-right: 2vh; 
+	max-height: min-content;
+	text-transform: italics; 
+}
+
+.cartSub {
+	margin-left: 1vh; 
+}
+
+.subFont{
+	font-size: 11px; 
 }

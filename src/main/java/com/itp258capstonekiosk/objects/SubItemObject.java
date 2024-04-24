@@ -1,6 +1,8 @@
 package com.itp258capstonekiosk.objects;
 
-public class SubItemObject {
+import java.io.Serializable;
+
+public class SubItemObject implements Serializable {
 
 	private String name;
 	private int category;

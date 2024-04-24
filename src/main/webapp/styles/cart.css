@@ -16,6 +16,7 @@
 	align-self: end; 
 	box-sizing: border-box; 
 	position: sticky; 
+	bottom: 0; 
 	padding-bottom: 2vh;
 	padding-left: 1vw; 
 	font-weight: 500; 

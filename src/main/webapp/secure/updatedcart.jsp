@@ -14,7 +14,14 @@
 	<h2 class="cartHeader">Your Order</h2>
 	<div class="orderItems">
 		<c:forEach items="${sessionScope.cart}" var="item">
-			<div class="cartItem">${item.name}</div><div class="cartCost">$${item.cost}</div>
+			<div class="shoppingCart">
+				<div class="cartItem">${item.name}</div><div class="cartCost">$${item.cost}</div>
+				<c:if test= "${item.subItems != null}">
+					<c:forEach items="${item.subItems}" var="values">
+						<div class="cartSub subFont">${values.name}</div><div class="subCost subFont">$${values.cost}</div>
+					</c:forEach>
+				</c:if>
+			</div>
 		</c:forEach>
 	</div>
 	<div class="total">
