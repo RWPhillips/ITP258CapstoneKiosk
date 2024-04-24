@@ -21,7 +21,7 @@
 .subPCont {
 	width: 100%; 
 	display:grid;
-	grid-template-columns: 1vw 27vw 27vw; 
+	grid-template-columns: 1vw 55vw; 
 }
 
 .subLabel {
@@ -41,9 +41,9 @@
 }
 
 .displayName {
-	align-self: left; 
+	justify-self: left; 
 }
 
 .displayCost {
-	align-self: right; 
+	justify-self: right; 
 }

@@ -4,19 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ItemObject implements Serializable {
-
+	private static int counter = 100; 
+	
 	private String name;
 	private int category;
 	private String description;
 	private String picture;
 	private double cost;
 	private ArrayList<SubItemObject> subItems;
+	private int id; 
+	
+
+	
 
 	public ItemObject() {
 	}
 	
 	public ItemObject(String name) {
 		this.name = name;
+		this.id = counter; 
+		counter++; 
 	}
 
 	public ItemObject(int category, String name, double cost, String picture, String description) {
@@ -25,6 +32,8 @@ public class ItemObject implements Serializable {
 		this.description = description;
 		this.picture = picture;
 		this.cost = cost;
+		this.id = counter; 
+		counter++; 
 	}
 
 	public String getName() {
@@ -73,6 +82,10 @@ public class ItemObject implements Serializable {
 
 	public void setCategory(int category) {
 		this.category = category;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 

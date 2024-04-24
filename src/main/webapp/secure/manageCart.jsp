@@ -16,7 +16,7 @@
 		<c:forEach items="${sessionScope.cart}" var="item">
 			<div class="manageCart">
 				<div class="fullItem">
-					<div class="subPCont"><input type="checkbox" class=".hidden" id="${item.name}"><label class="subLabel" for ="${item.name}"><span class="displayName" manageFont>${item.name}</span><span class="displayCost manageFont">$${item.cost}</span></label></div>
+					<div class="subPCont"><input type="checkbox" class=".hidden" id="${item.id}"><label class="subLabel" for ="${item.id}"><span class="displayName manageFont">${item.name}</span><span class="displayCost manageFont">$${item.cost}</span></label></div>
 					<c:if test= "${item.subItems != null}">
 						<c:forEach items="${item.subItems}" var="values">
 							<div class="cartSub subFont">${values.name}</div><div class="subCost subFont">$${values.cost}</div>
