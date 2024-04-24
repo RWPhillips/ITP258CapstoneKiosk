@@ -31,7 +31,7 @@ public class CartService {
 	        connection = database.getConnection();
 	        
 	        // Prepare the SQL statement to get all items
-	        CallableStatement callableStatement = connection.prepareCall("{CALL getSubItemList(?)}");
+	        CallableStatement callableStatement = connection.prepareCall("{CALL getFullSub(?)}");
 	        callableStatement.setString(1, name);
 	        
 	        // Execute the query
@@ -39,12 +39,13 @@ public class CartService {
 	
 	        // Check for sub item
 	        if (resultSet.next()) {
-		        String subItemName = resultSet.getString(1);
-		        double subItemCost = resultSet.getDouble(2);
-		        int subItemCat = resultSet.getInt(3);
+	        	int itemID = resultSet.getInt(1);
+		        String subItemName = resultSet.getString(2);
+		        double subItemCost = resultSet.getDouble(3);
+		        int subItemCat = resultSet.getInt(4);
 		                       
 		        // Create ItemObject instance
-		        subItem = new SubItemObject(subItemName);
+		        subItem = new SubItemObject(subItemName, subItemCost,subItemCat);
 	        }
         
 	    } catch (SQLException e) {

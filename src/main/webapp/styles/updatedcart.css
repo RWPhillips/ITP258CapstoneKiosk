@@ -1,5 +1,35 @@
 .upcart {
-	height: 75vh; 
+	height: 100%; 
+	box-sizing: border-box; 
 	position: relative;  
-	background-color: white; 
+	background-color: white;
+	width: 100%;
+}
+
+.totalright {
+	justify-self: right;  
+}
+
+.orderItems {
+	display: grid;
+	grid-template-columns: 1fr 1fr; 
+	margin-left: 1vw; 
+}
+
+.cartHeader {
+	margin-bottom: 0; 
+}
+
+.orderItems {
+	display: grid; 
+	grid-auto-rows: max-content; 
+}
+
+.cartCost {
+	justify-self: right; 
+	margin-right: 2vh; 
+	max-height: min-content;
+}
+.cartItem {
+	max-height: min-content;
 }

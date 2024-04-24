@@ -1,6 +1,7 @@
 package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import com.itp258capstonekiosk.objects.SubItemObject;
 public class DisplayCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	NumberFormat nf = NumberFormat.getCurrencyInstance(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -55,14 +57,14 @@ public class DisplayCartServlet extends HttpServlet {
 			if (obj.getSubItems() != null) {
 				for (SubItemObject sub : obj.getSubItems()) {
 					total += sub.getCost();
-					System.out.println("Subobj cost: " + sub.getCost());
+					System.out.println("Sub obj cost: " + sub.getCost());
 				}
 			}
 		}
 		
-		System.out.println("Total at end" + total); 
+		System.out.println("Total at end: " + total); 
 		
-		
+		request.setAttribute("cartTotal", nf.format(total)); 
 		
 		request.getRequestDispatcher("secure/updatedcart.jsp").forward(request, response); 
 		

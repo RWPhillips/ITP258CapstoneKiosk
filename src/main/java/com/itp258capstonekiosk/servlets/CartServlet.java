@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.objects.SubItemObject;
+import com.itp258capstonekiosk.services.CartService;
 
 /**
  * Servlet implementation class CartServlet
@@ -22,6 +25,9 @@ import com.itp258capstonekiosk.objects.SubItemObject;
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@Resource(name = "jdbc/kioskdatabase")
+	private DataSource dataSource;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,6 +45,9 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ItemObject item = (ItemObject) session.getAttribute("orderItem");
 		
+		
+		CartService cart = new CartService(dataSource); 
+		
 		// Get strings
 		String[] subItems = request.getParameterValues("subitems");
 		
@@ -49,7 +58,9 @@ public class CartServlet extends HttpServlet {
 		
 			// Go through each string, create a new sub object with the string, and then store it into sub-object array
 			for (String i : subItems) {
-				SubItemObject newSub = new SubItemObject(i);
+				
+				
+				SubItemObject newSub = cart.getSubItem(i);
 				subList.add(newSub);
 			}
 		

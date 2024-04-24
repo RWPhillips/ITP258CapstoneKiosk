@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Items</title>
+    <title>Ordering Kiosk</title>
     <script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.js"></script>
 </head>
 <body>

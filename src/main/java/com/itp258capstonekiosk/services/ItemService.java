@@ -617,7 +617,6 @@ public class ItemService {
                 double cost = resultSet.getDouble(2);
                 int category = resultSet.getInt(3);
                 
-                
                 // Create ItemObject instance
                 subItem = new SubItemObject(subItemName, cost, category);
                 
