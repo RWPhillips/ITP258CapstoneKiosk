@@ -59,7 +59,24 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 		        }
 		    }
 
-		    if (session != null && httpRequest.getRequestURI().endsWith("/secure/account.jsp") && session.getAttribute("username") != null) {
+		    if (session != null && (httpRequest.getRequestURI().endsWith("/secure/account.jsp") || httpRequest.getRequestURI().contains("/secure/create-")) && session.getAttribute("username") != null) {
+			    // User is logged in or accessing a public page; allow the request to proceed
+			    System.out.println("Filter says you're a Kiosk User!");
+			    
+		        // If the user is on login.jsp, redirect to /secure/news.jsp
+			    if (session.getAttribute("Role") == "user")
+			    	httpResponse.sendRedirect(httpRequest.getContextPath() + "/secure/splash-screen.jsp");
+			    
+			    chain.doFilter(request, response);
+		    }
+		    else {
+		    	
+		    	
+		    	chain.doFilter(request, response);
+		    }
+		    
+		    /*
+		    if (session != null && (httpRequest.getRequestURI().endsWith("/secure/account.jsp") && session.getAttribute("username") != null) {
 		    	
 			    // User is logged in or accessing a public page; allow the request to proceed
 			    System.out.println("Your session is valid, says the filter!");
@@ -75,7 +92,7 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 		    } else {
 		        // Otherwise, allow the request to proceed
 		        chain.doFilter(request, response);
-		    }
+		    }*/
 	}
 
 	/**
