@@ -3,11 +3,13 @@ package com.itp258capstonekiosk.services;
 import javax.print.*;
 import javax.print.attribute.*;
 import javax.print.attribute.standard.*;
+import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.ItemObject;
 import com.itp258capstonekiosk.objects.SubItemObject;
 
 import java.io.*;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,19 +21,29 @@ import java.util.Date;
 
 public class PrintService {
 
+	private DataSource dataSource;
+	private Connection connection;
+	private CallableStatement callableStatement;
+	private ResultSet resultSet;
+	private KioskDbUtil database;
+	
 	// Connection parameters
-	private static final String URL = "jdbc:mysql://localhost:3306/kioskDatabase";
-	private static final String USERNAME = "username???";
-	private static final String PASSWORD = "password???";
+	public PrintService(DataSource theDataSource) {
+		dataSource = theDataSource;
+	}
 
-	public void printReceipt(ArrayList<ItemObject> orderedItems, double totalCost, int ticketNumber) {
+	public void printReceipt(ArrayList<ItemObject> orderedItems, int ticketNumber) {
 		// Create receipt content
+		
+		double totalCost = 0;
 		StringBuilder receiptContent = new StringBuilder();
 		receiptContent.append("Receipt          Ticket Number: ").append(ticketNumber).append("\n");
 		receiptContent.append("Date: ").append(new Date()).append("\n");
 		receiptContent.append("------------------------------\n");
 		for (ItemObject item : orderedItems) {
 			receiptContent.append(item.getName()).append("\t\t").append(item.getCost()).append("\n");
+			
+			totalCost += item.getCost();
 
 			// Include subitems if available
 			ArrayList<SubItemObject> subItems = item.getSubItems();
@@ -39,6 +51,8 @@ public class PrintService {
 				for (SubItemObject subItem : subItems) {
 					receiptContent.append("\t").append(subItem.getName()).append("\t\t").append(subItem.getCost())
 							.append("\n");
+					
+					totalCost += subItem.getCost();
 				}
 			}
 		}
@@ -49,7 +63,7 @@ public class PrintService {
 		printText(receiptContent.toString());
 	}
 
-	private void printText(String text) {
+	public void printText(String text) {
 		try {
 			// Convert text to input stream
 			InputStream inputStream = new ByteArrayInputStream(text.getBytes());
@@ -80,12 +94,17 @@ public class PrintService {
 		}
 	}
 
-	private int generateOrderNumber() {
+	public int generateOrderNumber() {
 		int orderNumber = 0;
-		try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+		try {
+			
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+			
 			String query = "SELECT orderID FROM orders WHERE id = 1";
 			try (Statement statement = connection.createStatement()) {
-				ResultSet resultSet = statement.executeQuery(query);
+				resultSet = statement.executeQuery(query);
 				if (resultSet.next()) {
 					orderNumber = resultSet.getInt("orderID") + 1;
 					updateOrderNumber(orderNumber);
@@ -97,8 +116,13 @@ public class PrintService {
 		return orderNumber;
 	}
 
-	private void updateOrderNumber(int orderNumber) {
-		try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+	public void updateOrderNumber(int orderNumber) {
+		try {
+			
+		    // Connect to database
+		    database = new KioskDbUtil(dataSource);
+		    connection = database.getConnection();
+			
 			String query = "UPDATE orderID SET number = ? WHERE id = 1";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setInt(1, orderNumber);
