@@ -1,7 +1,9 @@
 package com.itp258capstonekiosk.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import com.itp258capstonekiosk.objects.ItemObject;
+import com.itp258capstonekiosk.services.PrintService;
 
 /**
  * Servlet implementation class CompleteOrderServlet
@@ -24,6 +30,9 @@ public class CompleteOrderServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+	@Resource(name = "jdbc/kioskdatabase")
+	private DataSource dataSource;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,8 +40,23 @@ public class CompleteOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		// Invalidate the existing session
+		// Retrieve the cart from session
 		HttpSession session = request.getSession(false);
+		
+		// Get array of cart items
+		ArrayList<ItemObject> cartItems = (ArrayList<ItemObject>) session.getAttribute("cart");
+		
+		// Data
+		PrintService print = new PrintService(dataSource);
+		
+		// Generate Ticket Number
+		int ticketNum = print.generateOrderNumber();
+		
+		// Print Receipt
+		print.printReceipt(cartItems, ticketNum);
+		
+
+		// Invalidate the session
 		if (session != null) {
 		    session.invalidate();
 		}
