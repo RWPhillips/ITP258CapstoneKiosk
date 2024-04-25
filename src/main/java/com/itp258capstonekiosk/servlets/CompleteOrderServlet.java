@@ -40,7 +40,7 @@ public class CompleteOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		// Empty the Cart. 
+		// Get the Cart
 		HttpSession session = request.getSession(false);
 		
 		// Get array of cart items
@@ -56,7 +56,7 @@ public class CompleteOrderServlet extends HttpServlet {
 		print.printReceipt(cartItems, ticketNum);
 		
 
-		// Invalidate the session
+		// Empty the Cart. 
 		if (session != null) {
 			 session.setAttribute("cart", null);
 		}
