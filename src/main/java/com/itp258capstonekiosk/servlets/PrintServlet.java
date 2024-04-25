@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.ItemObject;
-import com.itp258capstonekiosk.services.PrintService;
+import com.itp258capstonekiosk.services.PrintTicketService;
 
 /**
  * Servlet implementation class PrintServlet
@@ -47,7 +47,7 @@ public class PrintServlet extends HttpServlet {
 		ArrayList<ItemObject> cartItems = (ArrayList<ItemObject>) session.getAttribute("cart");
 		
 		// Data
-		PrintService print = new PrintService(dataSource);
+		PrintTicketService print = new PrintTicketService(dataSource);
 		
 		// Generate Ticket Number
 		int ticketNum = print.generateOrderNumber();
