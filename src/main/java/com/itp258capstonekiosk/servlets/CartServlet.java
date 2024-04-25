@@ -45,7 +45,6 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ItemObject item = (ItemObject) session.getAttribute("orderItem");
 		
-		
 		CartService cart = new CartService(dataSource); 
 		
 		// Get strings

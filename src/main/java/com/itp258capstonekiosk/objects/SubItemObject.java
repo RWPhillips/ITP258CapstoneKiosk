@@ -12,14 +12,14 @@ public class SubItemObject implements Serializable {
 	public SubItemObject() {
 		this.id = counter;
 		counter -= 1; 
-		System.out.println("empty");
+		//System.out.println("empty");
 	}
 	
 	public SubItemObject(String name) {
 		this.name = name;
 		this.id = counter;
 		counter -= 1; 
-		System.out.println("one");
+		//System.out.println("one");
 	}
 
 	public SubItemObject(String name, double cost, int category) {
@@ -28,7 +28,7 @@ public class SubItemObject implements Serializable {
 		this.category = category;
 		this.id = counter;
 		counter -= 1; 
-		System.out.println("full");
+		//System.out.println("full");
 	}
 
 	public String getName() {

@@ -49,7 +49,7 @@ public class DisplayCartServlet extends HttpServlet {
 		for (ItemObject obj : cart ) {
 			//add the cost of the item to the total
 			total += obj.getCost();
-			System.out.println("Obj Cost is: " + obj.getCost());
+			//System.out.println("Obj Cost is: " + obj.getCost());
 			
 			
 			
@@ -57,12 +57,12 @@ public class DisplayCartServlet extends HttpServlet {
 			if (obj.getSubItems() != null) {
 				for (SubItemObject sub : obj.getSubItems()) {
 					total += sub.getCost();
-					System.out.println("Sub obj cost: " + sub.getCost());
+					//.out.println("Sub obj cost: " + sub.getCost());
 				}
 			}
 		}
 		
-		System.out.println("Total at end: " + total); 
+		//System.out.println("Total at end: " + total); 
 		
 		request.setAttribute("cartTotal", nf.format(total)); 
 		
