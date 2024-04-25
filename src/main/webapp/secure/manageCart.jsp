@@ -38,7 +38,7 @@
 		</div>
 	<div class="manageButtons">
 		<button class="removeItems">Remove Items From Cart</button>
-		<button class="complete">Complete Order</button>
+		<button class="complete" hx-get="/ITP258CapstoneKiosk/CompleteOrderServlet">Complete Order</button>
 	</div>
 	</form>
 </div>

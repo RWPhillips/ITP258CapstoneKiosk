@@ -62,7 +62,8 @@ public class CompleteOrderServlet extends HttpServlet {
 		}
 
         // Send to JSP page
- 		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/splash-screen.jsp");
+		response.setHeader("HX-Redirect", request.getContextPath() + "/secure/splash-screen.jsp");
+ 		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/secure/splash-screen.jsp");
  		dispatcher.forward(request, response);
 	}
 
