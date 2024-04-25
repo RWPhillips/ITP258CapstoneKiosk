@@ -23,7 +23,6 @@ public class ImageService{
             response.getWriter().println("Error: Request is not multipart");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             System.out.println("request not multipart");
-
         }
 
         // Get the part for the image file
@@ -47,7 +46,6 @@ public class ImageService{
         //get the location of the folder
 
         String location = System.getProperty("catalina.home");
-
 
         //check to see if its a windows os
         if (os.contains("win")) {
