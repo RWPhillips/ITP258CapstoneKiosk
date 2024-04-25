@@ -19,16 +19,24 @@
         <div class="login-form-container">
             <div class="login-form">
                 <h2>Login</h2>
-                <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
+                <form action="${pageContext.request.contextPath}/LoginServlet" method="post" class="width">
                     <div class="grid-container">
-                        <div >
-                            <label for="username" class="padForm">Username:</label><br> <input
-                                type="text" id="username" name="username" class="padForm"><br>
+                        <div>
+                            <div class="padForm">
+                            	<label for="username" class="padForm">Username:</label>
+                           	</div>
+                           	<div> 
+                           		<input type="text" id="username" name="username" class="padForm">
+                           	</div>
                         </div>
-                        <div >
-                            <label for="password" class="padForm">Password:</label><br> <input
-                                type="password" id="password" name="password" class="padForm"><br>
-                        </div >
+                        <div>
+                            <div class="padForm">
+                            	<label for="password" class="padForm">Password:</label>
+                           	</div>
+                           	<div>
+                           		<input type="password" id="password" name="password" class="padForm">
+                           	</div>
+                        </div>
                         <div class="padForm"> 
                             <input type="submit" value="Login" class="login-button">
                         </div>

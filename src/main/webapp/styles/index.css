@@ -22,7 +22,7 @@ h2 {
 	background-color: #143D59;  
 	color: white; 
 	text-align: center; 
-	width: 12vw;  
+	width: 100%;  
 	padding-bottom: 1vh;  
 	margin: 0; 
 	border-radius: 5px 5px 0px 0px;  
@@ -55,21 +55,22 @@ h2 {
 	height: 144px; 
 }
 
+.login-form-container {
+    display: grid;
+    padding: 0px; 
+    width: 100%; 
+    margin-top: 5vh; 
+   	justify-content: center; 
+}
+
 .login-form {
 	padding: 0px; 
 	margin: 0px; 
+	width: 20vw; 
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
-.login-form-container {
-    display: grid;
-    justify-items: center;
-    border: 1px solid black;
-    padding: 0px; 
-    border-radius: 10px;
-    width: 12vw; 
-    margin-left: 45vw; 
-    margin-top: 5vh; 
-}
 
 .grid-container {
     display: grid;
@@ -94,7 +95,7 @@ h2 {
 }
 
 .padForm {
-	margin-bottom: 1vh; 
+	margin-bottom: 2vh; 
 }
 
 .login-button:hover {

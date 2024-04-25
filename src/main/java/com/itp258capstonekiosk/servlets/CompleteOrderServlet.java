@@ -31,14 +31,11 @@ public class CompleteOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		// Invalidate the existing session
+		// Empty the Cart. 
 		HttpSession session = request.getSession(false);
 		if (session != null) {
-		    session.invalidate();
+			 session.setAttribute("cart", null);
 		}
-
-		// Create a new session
-		session = request.getSession(true);
 
         // Send to JSP page
  		RequestDispatcher dispatcher = request.getRequestDispatcher("/secure/splash-screen.jsp");

@@ -4,13 +4,13 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 
 import javax.sql.DataSource;
 
 import com.itp258capstonekiosk.objects.SubItemObject;
 
 public class CartService {
-	
 	private DataSource dataSource;
 	private Connection connection;
 	private CallableStatement callableStatement;

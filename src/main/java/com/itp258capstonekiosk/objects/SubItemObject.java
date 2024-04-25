@@ -3,7 +3,7 @@ package com.itp258capstonekiosk.objects;
 import java.io.Serializable;
 
 public class SubItemObject implements Serializable {
-	private static int counter = 100; 
+	private static int counter = -100; 
 	private String name;
 	private int category;
 	private double cost;
@@ -11,13 +11,15 @@ public class SubItemObject implements Serializable {
 	
 	public SubItemObject() {
 		this.id = counter;
-		counter++; 
+		counter -= 1; 
+		System.out.println("empty");
 	}
 	
 	public SubItemObject(String name) {
 		this.name = name;
 		this.id = counter;
-		counter++; 
+		counter -= 1; 
+		System.out.println("one");
 	}
 
 	public SubItemObject(String name, double cost, int category) {
@@ -25,7 +27,8 @@ public class SubItemObject implements Serializable {
 		this.cost = cost;
 		this.category = category;
 		this.id = counter;
-		counter++; 
+		counter -= 1; 
+		System.out.println("full");
 	}
 
 	public String getName() {

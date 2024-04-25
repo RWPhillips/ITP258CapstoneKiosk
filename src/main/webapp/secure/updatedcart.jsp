@@ -10,15 +10,16 @@
 </head>
 <body>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <div class="cart">
 	<h2 class="cartHeader">Your Order</h2>
 	<div class="orderItems">
 		<c:forEach items="${sessionScope.cart}" var="item">
 			<div class="shoppingCart">
-				<div class="cartItem">${item.name}</div><div class="cartCost">$${item.cost}</div>
+				<div class="cartItem">${item.name}</div><div class="cartCost"><fmt:formatNumber value = "${item.cost}" type = "currency"/></div>
 				<c:if test= "${item.subItems != null}">
 					<c:forEach items="${item.subItems}" var="values">
-						<div class="cartSub subFont">${values.name}</div><div class="subCost subFont">$${values.cost}</div>
+						<div class="cartSub subFont">${values.name}</div><div class="subCost subFont"><fmt:formatNumber value = "${values.cost}" type = "currency"/></div>
 					</c:forEach>
 				</c:if>
 			</div>

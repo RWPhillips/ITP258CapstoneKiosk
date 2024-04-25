@@ -1,40 +1,47 @@
 .manageCart {
-	width: 55vw; 
+	width: 100%; 
 	padding-bottom: .75vh; 
+	box-sizing: border-box; 
+}
+
+.hiddenBox {
+	margin: 0; 
+	visibility: hidden; 
 }
 
 .cartManagement {
 	height: 75vh; 
 	box-sizing: border-box; 
 	position: absolute; 
-	border-left: 1vw solid #EA563C; 
 	background-color: white; 
-	margin-right: 1vw;
-	width: 58vw;  
+	width: 60vw;  
 	overflow-y: scroll;
     scrollbar-width: none;  
     -ms-overflow-style: none; 
     display: grid; 
-    grid-template-rows: 10% 70% auto; 
+    grid-template-rows: 10% 80% auto; 
 }
 
 .subPCont {
 	width: 100%; 
 	display:grid;
 	grid-template-columns: 1vw 55vw; 
+	box-sizing: border-box; 
+	margin-bottom: 1vh;
+	
 }
 
 .subLabel {
 	display:grid;
 	grid-template-columns: auto auto; 
+	box-sizing: border-box; 
 }
-
-
 
 .manageCost {
 	justify-self: right; 
 	margin-right: 2vh; 
 	max-height: min-content;
+	box-sizing: border-box;  
 }
 .manageItem {
 	max-height: min-content;
@@ -42,8 +49,76 @@
 
 .displayName {
 	justify-self: left; 
+	box-sizing: border-box; 
 }
 
 .displayCost {
 	justify-self: right; 
+	box-sizing: border-box; 
+}
+
+.subItemLabel {
+	margin-left: 1vw; 
+}
+
+.subItemC {
+	width: 100%; 
+	display:grid;
+	grid-template-columns: 1vw 55vw; 
+	margin-bottom: 1vh; 
+}
+
+.subItemLabel {
+	display:grid;
+	grid-template-columns: auto auto; 
+}
+
+.orderText {
+	font-size: 26px; 
+	box-sizing: border-box;
+	width: 100%;  
+	margin-bottom: 1.5vh; 
+}
+
+.subPCont:has(input:checked){
+	text-decoration: line-through; 
+}
+
+.subItemC:has(input:checked) {
+	text-decoration: line-through; 
+}
+
+.manageButtons {
+	align-self: end; 
+	box-sizing: border-box; 
+	position: sticky; 
+	bottom: 0; 
+	margin-bottom: 1vh;
+	margin-left: 1vw; 
+	font-weight: 500; 
+	width: 100%; 
+	display: grid;
+	grid-template-columns: 1fr 1fr; 
+	height: 100%; 
+}
+
+.removeItems {
+	margin: 0;
+	justify-self: center; 
+	align-self: end; 
+	width: 20vw; 
+	height: 90%; 
+}
+
+.complete {
+	justify-self: center; 
+	margin: 0; 
+	height: 90%; 
+	width: 20vw; 
+	align-self: end; 
+}
+
+.fullItem {
+	box-sizing: border-box; 	
+
 }
