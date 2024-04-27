@@ -1,3 +1,3 @@
 # ITP258-Capstone-Kiosk
 
-This is the capstone project for ITP258.
+This is Team One's capstone project for ITP258, 2024.
