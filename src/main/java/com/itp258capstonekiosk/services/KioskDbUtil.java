@@ -37,8 +37,8 @@ public class KioskDbUtil {
         }
 
         String jdbcUrl = "jdbc:mysql://localhost/kioskdatabase?useUnicode=true&characterEncoding=UTF-8";
-        String user = "admin";
-        String password = "1234";
+        String user = "service";
+        String password = "AbsoluteTiredBehemothRock";
 
         try {
             connection = DriverManager.getConnection(jdbcUrl, user, password);
